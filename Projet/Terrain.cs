@@ -1,1 +1,7 @@
-//public abstract
+public abstract class Terrain
+{
+    public Terrain()
+    {
+        
+    }
+}
