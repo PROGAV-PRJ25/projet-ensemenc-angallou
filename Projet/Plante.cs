@@ -7,7 +7,9 @@ public abstract class Plante
     public bool miam { get; set; }
     //nature de la plante : si elle est bonne à manger ou pas
     public string saison { get; set; }
+    
     //public Terrain terrain; TODO2
+    
     public int espacement { get; set; }
     public int place { get; set; }
     public int vitesse { get; set; }
@@ -15,25 +17,20 @@ public abstract class Plante
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
 
-    public const Dictionary<int, string> maladie = new Dictionary<int, string>
-    {
-        { 1, "peste"},
-        {2, "choléra"}
-    };
     public void Plante(int X, int Y, bool Etat, bool Miam, string Saison, int Espacement, int Place, int Vitesse, int EsperanceVie, int NbFruits)
     {
-        X = X;
-        Y = Y;
-        Etat = etat;
-        Miam = miam;
-        Saison = saison;
+        x = X;
+        y = Y;
+        etat = Etat;
+        miam = Miam;
+        saison = Saison;
         //Terrain TODO2
-        Espacement = espacement;
-        Place = place;
-        Vitesse = vitesse;
+        espacement = Espacement;
+        place = Place;
+        vitesse = Vitesse;
         //maladie TODO1
-        EsperanceVie = esperanceVie;
-        NbFruits = nbFruits;
+        esperanceVie = EsperanceVie;
+        nbFruits = NbFruits;
 
     }
 }
