@@ -17,7 +17,7 @@ public abstract class Plante
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
 
-    public void Plante(int X, int Y, bool Etat, bool Miam, string Saison, int Espacement, int Place, int Vitesse, int EsperanceVie, int NbFruits)
+    public Plante(int X, int Y, bool Etat, bool Miam, string Saison, int Espacement, int Place, int Vitesse, int EsperanceVie, int NbFruits)
     {
         x = X;
         y = Y;
