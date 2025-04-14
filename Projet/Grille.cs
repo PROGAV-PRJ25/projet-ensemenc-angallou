@@ -2,45 +2,104 @@ public class Grille
 {
     public int lignes;
     public int colonnes;
-    public Grille(int row=8, int col=8)
+    public Grille()
     {
-        lignes = row;
-        colonnes = col;
+        lignes = 6;
+        colonnes = 6;
     }
     public void Afficher()
     {
-        Console.Write("\u001b[2J\u001b[H"); // Efface la console (équivalent à Console.Clear())
-        for (int i = 0; i < lignes; i++)
+        Console.Clear();
+        int k = 0;
+        while (k < (lignes/2)+1)
         {
-            for (int j = 0; j < colonnes; j++)
+            for (int i = 0; i < (lignes/2)+1; i++)
             {
-                Console.Write($"[ ]");
+                Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
             }
+            Console.Write("╬");
+            Console.Write(" ▒▒ ");
+            for (int i = lignes/2; i < lignes+1; i++)
+            {
+                Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
+            }
+            Console.WriteLine("╬");
+            for (int i = 0; i < (lignes/2)+1; i++)
+            {
+                Console.Write("║   "); // Chaque case est entourée de " ║ "
+            }
+            Console.Write("║");
+            Console.Write(" ▒▒ ");
+            for (int i = lignes/2; i < lignes+1; i++)
+            {
+                Console.Write("║   "); // Chaque case est entourée de " ║ "
+            }
+            Console.WriteLine("║");
+            k++;
         }
-    }
-     // Afficher la première ligne de séparateurs
-    for (int i = 0; i < plateau.GetLength(1); i++)
-    {
-        Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
-    }
-    Console.WriteLine("╬");
-
-    // Affichage des lignes du plateau
-    for (int i = 0; i < plateau.GetLength(0); i++)
-    {
-        // Affichage des cases de chaque ligne
-        for (int j = 0; j < plateau.GetLength(1); j++)
+        for (int i = 0; i < (lignes/2)+1; i++)
         {
-            Console.Write("║ " + plateau[i, j] + " "); // Chaque case est entourée de " ║ "
+            Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
         }
-        Console.WriteLine("║");
-
-        // Affichage de la ligne de séparation après chaque ligne de cases
-        for (int j = 0; j < plateau.GetLength(1); j++)
+        Console.Write("╬");
+        Console.Write(" ▒▒ ");
+        for (int i = lignes/2; i < lignes+1; i++)
         {
-            Console.Write("╬═══"); // Séparateur après chaque ligne de cases
+            Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
+        }
+        Console.WriteLine("╬");
+
+        for (int i = 0; i < (lignes/2)+1; i++)
+        {
+            Console.Write("▒▒▒▒");
+        }
+        Console.Write("▒▒");
+        Console.Write("  ");
+        Console.Write("▒▒");
+        for (int i = (lignes/2)+1; i < lignes+2; i++)
+        {
+            Console.Write("▒▒▒▒");
+        }
+        Console.WriteLine();
+
+        k = (lignes/2)+1;
+        while (k < lignes+2)
+        {
+            for (int i = 0; i < (lignes/2)+1; i++)
+            {
+                Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
+            }
+            Console.Write("╬");
+            Console.Write(" ▒▒ ");
+            for (int i = lignes/2; i < lignes+1; i++)
+            {
+                Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
+            }
+            Console.WriteLine("╬");
+            for (int i = 0; i < (lignes/2)+1; i++)
+            {
+                Console.Write("║   "); // Chaque case est entourée de " ║ "
+            }
+            Console.Write("║");
+            Console.Write(" ▒▒ ");
+            for (int i = lignes/2; i < lignes+1; i++)
+            {
+                Console.Write("║   "); // Chaque case est entourée de " ║ "
+            }
+            Console.WriteLine("║");
+            k++;
+        }
+        for (int i = 0; i < (lignes/2)+1; i++)
+        {
+            Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
+        }
+        Console.Write("╬");
+        Console.Write(" ▒▒ ");
+        for (int i = lignes/2; i < lignes+1; i++)
+        {
+            Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
         }
         Console.WriteLine("╬");
     }
-}
+
 }
