@@ -4,8 +4,7 @@ public abstract class Plante
     public int y { get; set; }
     public bool etat { get; set; }
     //1 = la plante va bien, 0 = nul
-    public bool miam { get; set; }
-    //nature de la plante : si elle est bonne à manger ou pas
+    public bool miam { get; set; } //nature de la plante : si elle est bonne à manger ou pas
     public string saison { get; set; }
     
     //public Terrain terrain; TODO2
@@ -31,6 +30,5 @@ public abstract class Plante
         //maladie TODO1
         esperanceVie = EsperanceVie;
         nbFruits = NbFruits;
-
     }
 }
