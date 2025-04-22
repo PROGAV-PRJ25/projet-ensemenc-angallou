@@ -1,4 +1,4 @@
-public abstract class Saison
+public class Saison
 {
     Random rng = new Random();
     public double Pluie;
@@ -8,7 +8,7 @@ public abstract class Saison
         Pluie = pluie;
         Soleil = soleil;
     }
-    public abstract string CalculerMeteo()
+    public string CalculerMeteo()
     {
         double pluie = rng.Next(0,1);
         double soleil = rng.Next(0,1);
