@@ -31,4 +31,5 @@ public abstract class Plante
         esperanceVie = EsperanceVie;
         nbFruits = NbFruits;
     }
+    
 }
