@@ -1,6 +1,6 @@
 public abstract class Terrain
 {
-    public humidite;
+    public double humidite;
     public Terrain()
     {
         

@@ -1,11 +1,11 @@
 public abstract class Saison
 {
-    public double probaPluie;
-    public double probaSoleil;
+    public double Pluie;
+    public double Soleil;
     public Saison (double pluie, double soleil)
     {
-        probaPluie = pluie;
-        probaSoleil = soleil;
+        Pluie = pluie;
+        Soleil = soleil;
     }
-    public void AfficherMeteo();
+    public string CalculerMeteo();
 }
