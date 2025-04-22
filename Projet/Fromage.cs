@@ -1,7 +1,7 @@
 /*
 public class Fromage : Terrain
 {
-    public Fromage(double humidite, string ) : base(humidite)
+    public Fromage(double humidite) : base(humidite)
     {
 
     }

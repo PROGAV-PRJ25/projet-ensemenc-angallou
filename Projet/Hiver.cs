@@ -1,14 +1,12 @@
-public class Saison
+public class Hiver : Saison
 {
     Random rng = new Random();
-    public double Pluie;
-    public double Soleil;
-    public Saison(double pluie, double soleil)
+    public Hiver(double Pluie, double Soleil) : base(Pluie,Soleil)
     {
-        Pluie = pluie;
-        Soleil = soleil;
+        Pluie = 0.8;
+        Soleil = 0.2;
     }
-    public string CalculerMeteo()
+    public override string CalculerMeteo()
     {
         double pluie = rng.Next(0,1);
         double soleil = rng.Next(0,1);
