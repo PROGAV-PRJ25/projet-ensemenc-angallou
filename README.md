@@ -16,15 +16,27 @@ Plantes :
         Arbre à Cheddar -> donne des cadeaux spéciaux (éclair 40% de chance d'obtention; sérum contre maladies 40% de chance ; étoile qui remet les stats nickel 20% de chance)
 
 Préférences : 
-Arbre cheddar - terrain fromage (duh)
-Fleur de feu - Volcan
-Fleur de glace - océan
-plante carnivore - tout
+    Arbre cheddar - terrain fromage (duh)
+    Fleur de feu - Volcan
+    Fleur de glace - océan
+    plante carnivore - tout
 
 Terrains:
         - Fromage
         - Palais de lave (volcan)
         - Arc-en-ciel -> tout y pousse!
         - Océan
+
+Maladies : 
+    - glaglaose pour fleur de glace
+    - qué calorose pour fleur de feu
+    - les toxinelles pour l'arbre à cheddar -> peuvent être mangées par la plante carnivore... mais attention aux contagions ! La carnivore mets du temps à les manger, et pendant ce temps d'autres plantes peuvent être infectées.
+
+Réserves :
+    - boules de feu
+    - boule de glace
+    - éclairs
+    - cheddar -> permet de booster l'action de la plante carnivore en cas d'invasion de toxinelles 
+
 
 Si on a le time : faire une animation pour le mode urgence
