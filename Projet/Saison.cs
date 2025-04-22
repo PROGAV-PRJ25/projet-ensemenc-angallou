@@ -26,5 +26,5 @@ public abstract class Saison
             else
                 return "Averse ensoleillée";
         }
-    };
+    }
 }
