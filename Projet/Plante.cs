@@ -14,7 +14,7 @@ public abstract class Plante
     public int vitesse { get; set; }
     // faire un dictionnaire pour les maladies TODO1
     public int esperanceVie { get; set; }
-    public int nbFruits { get; set; }
+    public int nbFruits { get; set; } //nbe de fruit par plant
 
     public Plante(int X, int Y, bool Etat, bool Miam, string Saison, int Espacement, int Place, int Vitesse, int EsperanceVie, int NbFruits)
     {
@@ -31,5 +31,5 @@ public abstract class Plante
         esperanceVie = EsperanceVie;
         nbFruits = NbFruits;
     }
-    
+
 }
