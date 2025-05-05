@@ -1,4 +1,4 @@
-public class Saison
+public abstract class Saison
 {
     Random rng = new Random();
     public double Pluie;
@@ -10,8 +10,8 @@ public class Saison
     }
     public string CalculerMeteo()
     {
-        double pluie = rng.Next(0,1);
-        double soleil = rng.Next(0,1);
+        double pluie = rng.NextDouble();
+        double soleil = rng.NextDouble();
         if (pluie > Pluie)
         {
             if (soleil > Soleil)

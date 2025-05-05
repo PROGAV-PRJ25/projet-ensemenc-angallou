@@ -2,7 +2,7 @@
 
 Règles du jeu mode classique : 
     On commence le jeu avec des réservoirs en eau, en éclair et en boule de feu.
-    Les variations des saisons sont assez vénère : en été, le terrain fromage et palais de lave fondent, et il faut leur mettre de la glace dessus pour empêcher la fonte. En hiver, l'océan gèle et il faut balancer des boules de feu dessus pour le dégeler. Le terrain arc-en-ciel, lui, reste toujours cool.
+    Les variations des saisons sont assez vénères : en été, le terrain fromage et palais de lave fondent, et il faut leur mettre de la glace dessus pour empêcher la fonte. En hiver, l'océan gèle et il faut balancer des boules de feu dessus pour le dégeler. Le terrain arc-en-ciel, lui, reste toujours cool.
 
 Mode Urgence : 
     - Kart qui vient ravager les plants en horizontal ou random
@@ -10,10 +10,10 @@ Mode Urgence :
 
 
 Plantes : 
-        Fleur de glace -> donne des boules de glace + résistance à la glace
-        Plantes carnivores : elle peut manger les plantes qui l'entourent si jamais on s'en occupe mal (si ses conditions sont à moins de 50%). Est la seule plante qui permet d'avoir des graines quand on la coupe.
-        Fleur de feu -> donne des boules de feu + résistance au feu
-        Arbre à Cheddar -> donne des cadeaux spéciaux (éclair 40% de chance d'obtention; sérum contre maladies 40% de chance ; étoile qui remet les stats nickel 20% de chance)
+    - Fleur de glace -> donne des boules de glace + résistance à la glace
+    - Plantes carnivores : elle peut manger les plantes qui l'entourent si jamais on s'en occupe mal (si ses conditions sont à moins de 50%). Est la seule plante qui permet d'avoir des graines quand on la coupe.
+    - Fleur de feu -> donne des boules de feu + résistance au feu
+    - Arbre à Cheddar -> donne des cadeaux spéciaux (éclair 40% de chance d'obtention; sérum contre maladies 40% de chance ; étoile qui remet les stats nickel 20% de chance)
 
 Préférences : 
     Arbre cheddar - terrain fromage (duh)
@@ -28,8 +28,8 @@ Terrains:
         - Océan
 
 Maladies : 
-    - glaglaose pour fleur de glace
-    - qué calorose pour fleur de feu
+    - glaglaose pour fleur de feu
+    - qué calorose pour fleur de glace
     - les toxinelles pour l'arbre à cheddar -> peuvent être mangées par la plante carnivore... mais attention aux contagions ! La carnivore mets du temps à les manger, et pendant ce temps d'autres plantes peuvent être infectées.
 
 Réserves :
