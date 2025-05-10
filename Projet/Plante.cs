@@ -4,8 +4,8 @@ public abstract class Plante
     public int y { get; set; }
     public bool etat { get; set; }
     public bool miam { get; set; }
-    public string saison { get; set; }
-    public string terrainPref { get; set; }
+    public enum saison { get; set; }
+    public Terrain terrainPref { get; set; }
     public int espacement { get; set; }
     public int place { get; set; }
     public int vitesse { get; set; }
@@ -13,10 +13,10 @@ public abstract class Plante
     public double besoinLumiere { get; set; }
     public int tempMin { get; set; }
     public int tempMax { get; set; }
-    public string maladie { get; set; }
+    public Maladie maladie { get; set; }
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
-    public Plante(int X, int Y, bool Etat, bool Miam, string Saison, string TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, string Maladie, int EsperanceVie, int NbFruits)
+    public Plante(int X, int Y, bool Etat, bool Miam, enum Saison, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, Maladie Maladie, int EsperanceVie, int NbFruits)
     {
         x = X;
         y = Y;
@@ -39,10 +39,12 @@ public abstract class Plante
     public bool VerifLimPlateau(int x, int y)
     { }
     */
-    public double Satisfaction()
+    public double Satisfaction(string Terrain, bool Espacement, double Eau, double lumiere, int Temp)
     {
         double tauxSatisfaction = 0;
-        if 
+        if (Terrain == terrainPref)
+            tauxSatisfaction += 0.2;
+        if (Espacement )    
         return tauxSatisfaction;
     }
     /*

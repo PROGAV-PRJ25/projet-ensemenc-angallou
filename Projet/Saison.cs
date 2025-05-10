@@ -1,10 +1,12 @@
 public abstract class Saison
 {
-    Random rng = new Random();
+    private static Random rng = new Random();
+    public string Nom;
     public double Pluie;
     public double Soleil;
-    public Saison(double pluie, double soleil)
+    public Saison(string nom, double pluie, double soleil)
     {
+        Nom = nom;
         Pluie = pluie;
         Soleil = soleil;
     }
@@ -14,17 +16,15 @@ public abstract class Saison
         double soleil = rng.NextDouble();
         if (pluie > Pluie)
         {
-            if (soleil > Soleil)
-                return "Nuageux";
-            else
-                return "Ensoleillé";
+            return (soleil > Soleil) ? "Nuageux" : "Ensoleillé"; 
         }
         else
         {
-            if (soleil > Soleil)
-                return "Pluvieux";
-            else
-                return "Averse ensoleillée";
+            return (soleil > Soleil) ? "Pluvieux" : "Averse ensoleillée";
         }
+    }
+    public override string ToString()
+    {
+        return Nom;
     }
 }
