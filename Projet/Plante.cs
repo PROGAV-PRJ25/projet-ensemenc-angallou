@@ -1,6 +1,6 @@
 public abstract class Plante
 {
-    public string nom {get; set;}
+    public string nom { get; set; }
     public int x { get; set; }
     public int y { get; set; }
     public bool etat { get; set; }
@@ -17,9 +17,28 @@ public abstract class Plante
     public Maladie maladie { get; set; }
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
-    public Plante(string Nom, int X, int Y, bool Etat, bool Miam, Saison SaisonM, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, Maladie Maladie, int EsperanceVie, int NbFruits)
+
+    public Plante(
+        string Nom,
+        int X,
+        int Y,
+        bool Etat,
+        bool Miam,
+        Saison SaisonM,
+        Terrain TerrainPref,
+        int Espacement,
+        int Place,
+        int Vitesse,
+        double BesoinEau,
+        double BesoinLumiere,
+        int TempMin,
+        int TempMax,
+        Maladie Maladie,
+        int EsperanceVie,
+        int NbFruits
+    )
     {
-        nom=Nom;
+        nom = Nom;
         x = X;
         y = Y;
         etat = Etat; //false si satisfaction < 0.5
@@ -37,11 +56,18 @@ public abstract class Plante
         esperanceVie = EsperanceVie;
         nbFruits = NbFruits;
     }
+
     /*
     public bool VerifLimPlateau(int x, int y)
     { }
     */
-    public double Satisfaction(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp)
+    public double Satisfaction(
+        Terrain TerrainActuel,
+        bool Espacement,
+        double Eau,
+        double Lumiere,
+        int Temp
+    )
     {
         double tauxSatisfaction = 0;
         if (TerrainActuel == terrainPref)
@@ -53,10 +79,17 @@ public abstract class Plante
         if (Lumiere >= besoinLumiere)
             tauxSatisfaction += 0.2;
         if (Temp >= tempMin && Temp <= tempMax)
-            tauxSatisfaction += 0.2; 
+            tauxSatisfaction += 0.2;
         return tauxSatisfaction;
     }
-    public void Croissance(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp)
+
+    public void Croissance(
+        Terrain TerrainActuel,
+        bool Espacement,
+        double Eau,
+        double Lumiere,
+        int Temp
+    )
     {
         double satisfaction = Satisfaction(TerrainActuel, Espacement, Eau, Lumiere, Temp);
         if (etat == true) // si la plante est toujours vivante
@@ -67,7 +100,7 @@ public abstract class Plante
             }
             else if (Satisfaction() >= 0.5 && Satisfaction() < 0.7)
             {
-                place += vitesse/2; // croissance réduite
+                place += vitesse / 2; // croissance réduite
             }
             else if (Satisfaction() >= 0.7 && Satisfaction() < 0.9)
             {
@@ -75,7 +108,7 @@ public abstract class Plante
             }
             else
             {
-                place += vitesse*2; // croissance augmentée
+                place += vitesse * 2; // croissance augmentée
             }
         }
         else // Si la plante est morte
