@@ -16,7 +16,7 @@ public abstract class Saison
         double soleil = rng.NextDouble();
         if (pluie > Pluie)
         {
-            return (soleil > Soleil) ? "Nuageux" : "Ensoleillé"; 
+            return (soleil > Soleil) ? "Nuageux" : "Ensoleillé"; // Si soleil > Soleil, alors le temps est "Nuageux" sinon il est "Ensoleillé"
         }
         else
         {
