@@ -1,28 +1,28 @@
 public class Calendrier
 {
-    public int semaine;
-    public Calendrier()
+    public int semaine { get; set; }
+    public class Calendrier()
     {
-        semaine = 1; 
+        semaine = 1;
     }
-    public Saison saisonCourante // Détermine la saison actuelle selon la semaine actuelle
+    public Saison saisonCourante
     {
         get
         {
-            if (semaine >=1 && semaine <= 13) // Les 13 premières semaines c'est l'hiver
+            if (Semaine >=1 && Semaine <= 13)
                 return new Hiver();
-            else if (semaine >= 14 && semaine <= 26) // Les 13 suivantes c'est le printemps
+            else if (Semaine >= 14 && Semaine <= 26)
                 return new Printemps();
-            else if (semaine >= 27 && semaine <= 39) // Les 13 suivantes c'est l'été
+            else if (Semaine >= 27 && Semaine <= 39)
                 return new Ete();
-            else // Les 13 suivantes c'est l'automne 
+            else
                 return new Automne();
         }
     }
     public void AvancerSemaine()
     {
         semaine++;
-        if (semaine > 52) // Si une année est terminée, on en recommence une
-            semaine = 1;
+        if (semaine > 52)
+            semaine = 1; //une nouvelle année débute
     }
 }

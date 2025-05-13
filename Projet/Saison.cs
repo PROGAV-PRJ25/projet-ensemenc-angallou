@@ -1,30 +1,40 @@
 public abstract class Saison
 {
     private static Random rng = new Random();
-    public string Nom;
-    public double Pluie;
-    public double Soleil;
-    public Saison(string nom, double pluie, double soleil)
+    public string nom;
+    public double pluieMoyenne;
+    public double soleilMoyen;
+    public double pluieActuelle;
+    public double soleilActuel;
+    public int temperatureActuelle;
+    public Saison(string Nom, double PluieMoyenne, double SoleilMoyen)
     {
-        Nom = nom;
-        Pluie = pluie;
-        Soleil = soleil;
+        nom = Nom;
+        pluieMoyenne = Pluie;
+        soleilMoyen = Soleil;
+        CalculerMeteo();
     }
-    public string CalculerMeteo()
+    public void CalculerMeteo()
     {
-        double pluie = rng.NextDouble();
-        double soleil = rng.NextDouble();
-        if (pluie > Pluie)
+        pluieActuelle = rng.NextDouble();
+        soleilActuel = rng.NextDouble();
+        temperatureActuelle = rng.Next(RecupererTempMin(), RecupererTempMin() + 1);
+    }
+    public string DecrireMeteo()
+    {
+        if (pluieActuelle < pluieMoyenne) 
         {
-            return (soleil > Soleil) ? "Nuageux" : "Ensoleillé"; // Si soleil > Soleil, alors le temps est "Nuageux" sinon il est "Ensoleillé"
+            return (soleilActuel < soleilMoyen) ? "Nuageux" : "Ensoleillé"; // Si soleil > Soleil, alors le temps est "Nuageux" sinon il est "Ensoleillé"
         }
         else
         {
-            return (soleil > Soleil) ? "Pluvieux" : "Averse ensoleillée";
+            return (soleilActuel < soleilMoyen) ? "Pluvieux" : "Averse ensoleillée";
         }
     }
     public override string ToString()
     {
-        return Nom;
+        return $"{Nom} - Pluie : {pluieActuelle*100}% - Soleil : {soleilActuel*100}% - Température : {temperatureActuelle}°C;
     }
+    public abstract int RecupererTempMin();
+    public abstract int RecupererTempMax();
 }
