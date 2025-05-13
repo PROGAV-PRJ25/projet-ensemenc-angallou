@@ -4,7 +4,7 @@ public abstract class Plante
     public int y { get; set; }
     public bool etat { get; set; }
     public bool miam { get; set; }
-    public enum saison { get; set; }
+    public enum Saison { get; set; }
     public Terrain terrainPref { get; set; }
     public int espacement { get; set; }
     public int place { get; set; }
