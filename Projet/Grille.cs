@@ -10,10 +10,21 @@ public class Grille
     public void Afficher()
     {
         Console.Clear();
-        int k = 0;
-        while (k < (lignes/2)+1)
+
+        int moitie = lignes / 2; // indice de la moitié du potager
+
+        for (int i = 0; i <= lignes; i++)
         {
-            for (int i = 0; i < (lignes/2)+1; i++)
+            AfficherLigneSeparatrice(i == moitie); // ligne formant les bordures de cases
+            AfficherLigneContenu(i == moitie); // ligne formant les contenus de cases
+        }
+        AfficherLigneSeparatrice-
+
+
+
+
+
+
             {
                 Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
             }
