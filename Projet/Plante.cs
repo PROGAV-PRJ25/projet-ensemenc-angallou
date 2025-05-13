@@ -4,7 +4,7 @@ public abstract class Plante
     public int y { get; set; }
     public bool etat { get; set; }
     public bool miam { get; set; }
-    public enum saison { get; set; }
+    public Saison saison { get; set; }
     public Terrain terrainPref { get; set; }
     public int espacement { get; set; }
     public int place { get; set; }
@@ -16,13 +16,13 @@ public abstract class Plante
     public Maladie maladie { get; set; }
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
-    public Plante(int X, int Y, bool Etat, bool Miam, enum Saison, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, Maladie Maladie, int EsperanceVie, int NbFruits)
+    public Plante(int X, int Y, bool Etat, bool Miam, Saison SaisonM, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, Maladie Maladie, int EsperanceVie, int NbFruits)
     {
         x = X;
         y = Y;
         etat = Etat; //false si satisfaction < 0.5
         miam = Miam;
-        saison = Saison;
+        saison = SaisonM;
         terrainPref = TerrainPref; // si le terrain est le préféré, alors la satisfaction augmente
         espacement = Espacement; // si espacement respecté, alors la satisfaction augmente
         place = Place; // si il y a de la place, alors elle va croitre
