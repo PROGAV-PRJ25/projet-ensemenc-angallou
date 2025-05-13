@@ -18,7 +18,7 @@ public class Grille
             AfficherLigneSeparatrice(i == moitie); // ligne formant les bordures de cases
             AfficherLigneContenu(i == moitie); // ligne formant les contenus de cases
         }
-        AfficherLigneSeparatrice-
+        AfficherLigneSeparatrice(false);
 
 
 

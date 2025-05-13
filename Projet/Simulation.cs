@@ -1,7 +1,7 @@
 public class Simulation
 {
-    private List<Plante> plantes;
-    private Calendrier calendrier;
+    public List<Plante> plantes;
+    public Calendrier calendrier;
     public Simulation(List<Plante> plante)
     {
         plantes = plante;
@@ -39,10 +39,5 @@ public class Simulation
                 break;
             }
         }
-    }
-    public int TempParSaison(Saison saison)
-    {
-        if (saison.Nom == "Hiver") 
-            return 
     }
 }
