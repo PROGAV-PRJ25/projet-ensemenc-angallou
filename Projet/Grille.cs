@@ -18,99 +18,28 @@ public class Grille
             AfficherLigneSeparatrice(i == moitie); // ligne formant les bordures de cases
             AfficherLigneContenu(i == moitie); // ligne formant les contenus de cases
         }
-        AfficherLigneSeparatrice(false);
-
-
-
-
-
-
-            {
-                Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
-            }
-            Console.Write("╬");
-            Console.Write(" ▒▒ ");
-            for (int i = lignes/2; i < lignes+1; i++)
-            {
-                Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
-            }
-            Console.WriteLine("╬");
-            for (int i = 0; i < (lignes/2)+1; i++)
-            {
-                Console.Write("║   "); // Chaque case est entourée de " ║ "
-            }
-            Console.Write("║");
-            Console.Write(" ▒▒ ");
-            for (int i = lignes/2; i < lignes+1; i++)
-            {
-                Console.Write("║   "); // Chaque case est entourée de " ║ "
-            }
-            Console.WriteLine("║");
-            k++;
-        }
-        for (int i = 0; i < (lignes/2)+1; i++)
+        AfficherLigneSeparatrice(false); // dernière ligne, pas besoin de bloc spécial ici
+    }
+    private void AfficherLigneSeparatrice(bool ligneCentre)
+    {
+        for (int i = 0; i <= lignes; i++)
         {
-            Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
-        }
-        Console.Write("╬");
-        Console.Write(" ▒▒ ");
-        for (int i = lignes/2; i < lignes+1; i++)
-        {
-            Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
-        }
-        Console.WriteLine("╬");
-
-        for (int i = 0; i < (lignes/2)+1; i++)
-        {
-            Console.Write("▒▒▒▒");
-        }
-        Console.Write("▒▒");
-        Console.Write("  ");
-        Console.Write("▒▒");
-        for (int i = (lignes/2)+1; i < lignes+2; i++)
-        {
-            Console.Write("▒▒▒▒");
-        }
-        Console.WriteLine();
-
-        k = (lignes/2)+1;
-        while (k < lignes+2)
-        {
-            for (int i = 0; i < (lignes/2)+1; i++)
-            {
-                Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
-            }
-            Console.Write("╬");
-            Console.Write(" ▒▒ ");
-            for (int i = lignes/2; i < lignes+1; i++)
-            {
-                Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
-            }
-            Console.WriteLine("╬");
-            for (int i = 0; i < (lignes/2)+1; i++)
-            {
-                Console.Write("║   "); // Chaque case est entourée de " ║ "
-            }
-            Console.Write("║");
-            Console.Write(" ▒▒ ");
-            for (int i = lignes/2; i < lignes+1; i++)
-            {
-                Console.Write("║   "); // Chaque case est entourée de " ║ "
-            }
-            Console.WriteLine("║");
-            k++;
-        }
-        for (int i = 0; i < (lignes/2)+1; i++)
-        {
-            Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
-        }
-        Console.Write("╬");
-        Console.Write(" ▒▒ ");
-        for (int i = lignes/2; i < lignes+1; i++)
-        {
-            Console.Write("╬═══"); // chaque cellule est encadrée de " ╬═══ "
+            if (i == colonnes / 2 && ligneCentre)
+                Console.Write("╬ ▒▒ ");
+            else
+                Console.Write("╬═══");
         }
         Console.WriteLine("╬");
     }
-
+    private void AfficherLigneContenu(bool ligneCentre)
+    {
+        for (int i = 0; i <= lignes; i++)
+        {
+            if (i == colonnes / 2 && ligneCentre)
+                Console.Write("║ ▒▒ ");
+            else
+                Console.Write("║   ");
+        }
+        Console.WriteLine("║");
+    }
 }

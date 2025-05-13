@@ -1,7 +1,7 @@
 public class Calendrier
 {
     public int semaine { get; set; }
-    public class Calendrier()
+    public Calendrier()
     {
         semaine = 1;
     }
@@ -9,11 +9,11 @@ public class Calendrier
     {
         get
         {
-            if (Semaine >=1 && Semaine <= 13)
+            if (semaine >=1 && semaine <= 13)
                 return new Hiver();
-            else if (Semaine >= 14 && Semaine <= 26)
+            else if (semaine >= 14 && semaine <= 26)
                 return new Printemps();
-            else if (Semaine >= 27 && Semaine <= 39)
+            else if (semaine >= 27 && semaine <= 39)
                 return new Ete();
             else
                 return new Automne();

@@ -1,6 +1,6 @@
 public class Toxinelles : Maladie
 {
-public Toxinelles (int X, int Y) : base (X, Y, false, ArbreACheddar hihi, 100, "Plantes Carnivores"){}
+public Toxinelles (int X, int Y) : base (X, Y, false, ArbreACheddar hihi, 100, "Plantes Carnivores") { }
 }
 //if plante.x && plante.y == maladie (x, y) 
 // & if plante.nom == plantecible
