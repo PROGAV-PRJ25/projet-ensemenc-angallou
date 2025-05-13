@@ -39,30 +39,44 @@ public abstract class Plante
     public bool VerifLimPlateau(int x, int y)
     { }
     */
-    public double Satisfaction(string Terrain, bool Espacement, double Eau, double lumiere, int Temp)
+    public double Satisfaction(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp)
     {
         double tauxSatisfaction = 0;
-        if (Terrain == terrainPref)
+        if (TerrainActuel == terrainPref)
             tauxSatisfaction += 0.2;
-        if (Espacement )    
+        if (Espacement)
+            tauxSatisfaction += 0.2;
+        if (Eau >= besoinEau)
+            tauxSatisfaction += 0.2;
+        if (Lumiere >= besoinLumiere)
+            tauxSatisfaction += 0.2;
+        if (Temp >= tempMin && Temp <= tempMax)
+            tauxSatisfaction += 0.2;   
         return tauxSatisfaction;
     }
-    /*
-    public void Croissance()
+    public void Croissance(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp)
     {
-        if (etat == true)
+        double satisfaction = Satisfaction(TerrainActuel, Espacement, Eau, Lumiere, Temp);
+        if (etat == true) // si la plante est toujours vivante
         {
             if (Satisfaction() < 0.5)
             {
-                etat = false;
-                vitesse = -1;
+                etat = false; // la plante meurt
             }
-            else if (Satisfaction() >= 0.5 && Satisfaction() <= 0.8)
+            else if (Satisfaction() >= 0.5 && Satisfaction() < 0.7)
             {
-
+                place += vitesse/2; // croissance réduite
+            }
+            else if (Satisfaction() >= 0.7 && Satisfaction() < 0.9)
+            {
+                place += vitesse; // croissance normale
+            }
+            else
+            {
+                place += vitesse*2; // croissance augmentée
             }
         }
-        else
+        else // Si la plante est morte
         {
             Console.WriteLine("Cette plante est morte, il serait sage de la déraciner");
         }
