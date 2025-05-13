@@ -1,4 +1,11 @@
-public class Hiver : Saison
+public class Toxinelles : Maladie
 {
-    public Hiver() : base ("Hiver",0.8, 0.2) { }
+public Toxinelles (int X, int Y) : base (X, Y, false, ArbreACheddar hihi, 100, "Plantes Carnivores"){}
 }
+//if plante.x && plante.y == maladie (x, y) 
+// & if plante.nom == plantecible
+// then full attack
+// if defense.x && defense.y == maladie(x, y) (avec une marge si plante à proximité)
+// then remove menace
+
+//pour l'erreur avec la plante cible, c'est pck il cherche une plante précise...
