@@ -11,14 +11,16 @@ public class Simulation
     {
         while (true)
         {
-            Console.WriteLine($"\n Semaine {calendrier.semaine}")
+            Saison saison = calendrier.saisonCourante;
+            saison.CalculerMeteo();
+
+            Console.WriteLine($"\n Semaine n°{calendrier.semaine}");
+            Console.WriteLine(saison);
+            
             foreach (Plante plante in plantes)
             {
                 if (plante.etat)
                 {
-                    double eau = 1;
-                    double lumiere = 2;
-                    int temperature = TempParSaison(calendrier.saisonCourante);
                     bool bonEspacement = (plante.espacement <= plante.place);
                     plante.Croissance(plante.terrainPref,bonEspacement,eau,lumiere,temperature);
                     Console.WriteLine($"Plante {plante.nom} - Taille : {plante.place} - Etat : Vivante");     
@@ -28,6 +30,7 @@ public class Simulation
                 
             }
             calendrier.AvancerSemaine();
+            
             Console.WriteLine("Appuyez sur Entrée pour passer à la semaine suivante, ou sur Q pour quiiter le jeu");
             ConsoleKeyInfo touche = Console.ReadKey(true);
             if (touche.Key == ConsoleKey.Q)
