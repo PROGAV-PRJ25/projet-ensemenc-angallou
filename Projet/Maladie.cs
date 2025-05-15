@@ -7,14 +7,7 @@
     public string faiblesse { get; set; }
     public Type typePlanteCible { get; set; } // Type de plante visée par la maladie
 
-    public Maladie(
-        int X,
-        int Y,
-        bool ModeUrgence,
-        double Attaque,
-        string Faiblesse,
-        Type TypePlanteCible
-    )
+    public Maladie(int X, int Y, bool ModeUrgence, double Attaque, string Faiblesse, Type TypePlanteCible)
     {
         x = X;
         y = Y;
@@ -23,13 +16,12 @@
         faiblesse = Faiblesse;
         typePlanteCible = TypePlanteCible;
     }
-
     public virtual bool EstPlanteCible(Plante plante)
     {
         return plante.GetType() == typePlanteCible;
     }
 
-    public class Infecter() { } //TODO
+    public abstract void Infecter(Plante plante) { } 
 }
 
 //gérer le mode urgence

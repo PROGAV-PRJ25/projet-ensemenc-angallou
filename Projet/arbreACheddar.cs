@@ -1,11 +1,29 @@
 public class ArbreACheddar : Plante
 {
-<<<<<<< HEAD
-    public ArbreACheddar(int X, int Y) : base("Arbre à Cheddar",X, Y, true, true, Automne, "Fromage", 1, 3, 4, 0.6, 0.5, 10, 25, Toxinelles, 6, 4) { }
-=======
-    public ArbreACheddar(int X, int Y) : base("Arbre à Cheddar",X, Y, true, true, Automne, "Fromage", 1, 3, 4, 0.6, 0.5, 10, 25, Toxinelles, 6, 4)
+    public Inventaire inventaire;
+    private static Random rng = new Random();
+    public ArbreACheddar(int X, int Y, Inventaire inv) : base("Arbre à Cheddar", X, Y, true, true, new Automne(), new Fromage(), 1, 3, 1, 0.6, 0.5, 10, 25, new Toxinelles(), 50, 4)
     {
-
+        inventaire = inv;
     }
->>>>>>> 1d8af38ab3769ef3265509d980e918bebba2aea9
+    public override void ActiverPouvoirSpecial()
+    {
+        int alea = rng.Next(100); // calcule une proba entre 0 et 99
+
+        if (alea < 40)
+        {
+            inventaire.Ajouter("éclair");
+            Console.WriteLine($"{nom} vous offre un éclair !");
+        }
+        else if (alea < 80)
+        {
+            inventaire.Ajouter("sérum");
+            Console.WriteLine($"{nom} vous offre un sérum contre les maladies !");
+        }
+        else
+        {
+            inventaire.Ajouter("étoile");
+            Console.WriteLine($"{nom} vous offre une étoile magique !");
+        }
+    }
 }
