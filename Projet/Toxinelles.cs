@@ -1,15 +1,31 @@
 public class Toxinelles : Maladie
 {
-    public Toxinelles(int X, int Y)
-        : base(X, Y, false, 100, "Plantes Carnivores", typeof(ArbreACheddar)) { }
-
-    public override bool EstPlanteCible(Plante PlanteCible)
+    public bool digestion { get; set; }
+    public int delaiSurvie { get; set; }
+    public Toxinelles(int X, int Y) : base(X, Y, false, 100, "Plantes Carnivores", typeof(ArbreACheddar)) { }
     {
-        return PlanteCible is ArbreACheddar;
+        digestion = false;
+        delaiSurvie = 3;
+    }
+    public override void Infecter(Plante plante)
+    {
+        if (EstPlanteCible(plante))
+        {
+            digestion = true;
+            delaiSurvie = 3; // compte à rebours avant la mort si les toxinelles n'ont pas été anéanties
+            Console.WriteLine($"{plante.nom} a été infecté par des toxinelles !");
+        }
+    }
+    public void Agoniser(Plante plante)
+    {
+        if (digestion)
+        {
+            delaiSurvie--;
+            if (delaiSurvie == 0)
+            {
+                plante.etat = false;
+                Console.WriteLine($"{plante.nom} est mort : les toxinelles ont eu raison de votre plante !");
+            }
+        }
     }
 }
-//if plante.x && plante.y == maladie (x, y)
-// & if plante.nom == plantecible
-// then full attack TODO
-// if defense.x && defense.y == maladie(x, y) (avec une marge si plante à proximité)
-// then remove menace

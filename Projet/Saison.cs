@@ -33,7 +33,7 @@ public abstract class Saison
     }
     public override string ToString()
     {
-        return $"{Nom} - Pluie : {pluieActuelle*100}% - Soleil : {soleilActuel*100}% - Température : {temperatureActuelle}°C;
+        return $"{Nom} - Pluie : {pluieActuelle*100}% - Soleil : {soleilActuel*100}% - Température : {temperatureActuelle}°C";
     }
     public abstract int RecupererTempMin();
     public abstract int RecupererTempMax();

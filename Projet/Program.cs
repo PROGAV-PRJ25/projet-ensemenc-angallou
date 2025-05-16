@@ -3,6 +3,7 @@ Grille grille = new Grille();
 Console.Clear();
 grille.Afficher();
 
+/*
 Calendrier calendrier = new Calendrier();
 
 for (int i = 0; i < 10; i++)
@@ -14,3 +15,4 @@ for (int i = 0; i < 10; i++)
     //plante.Croissance(saison,meteo);
     calendrier.AvancerSemaine();
 }
+*/
