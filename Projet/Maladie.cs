@@ -5,7 +5,7 @@
     public bool modeUrgence { get; set; }
     public double attaque { get; set; }
     public string faiblesse { get; set; }
-    public Type typePlanteCible { get; set; } // Type de plante visée par la maladie
+    public Type typePlanteCible { get; set; } // Type de plante visée par la maladie 
 
     public Maladie(int X, int Y, bool ModeUrgence, double Attaque, string Faiblesse, Type TypePlanteCible)
     {
