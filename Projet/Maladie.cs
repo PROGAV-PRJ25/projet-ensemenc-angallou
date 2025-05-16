@@ -6,9 +6,7 @@
     public double attaque { get; set; } // Potentiel de dégâts directs (ex: perte de vie)
     public string faiblesse { get; set; }
     public Type typePlanteCible { get; set; } // Type de plante visée par la maladie
-
     public double gravite { get; set; } // Taux de réduction de satisfaction (ex: 0.3)
-
     public Maladie(
         int X,
         int Y,

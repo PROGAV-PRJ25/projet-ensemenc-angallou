@@ -3,11 +3,11 @@ public class ArbreACheddar : Plante
     public Inventaire inventaire;
     private static Random rng = new Random();
 
-    public ArbreACheddar(int X, int Y, Inventaire inv)
+    public ArbreACheddar(Inventaire inv)
         : base(
             "Arbre à Cheddar",
-            X,
-            Y,
+            0,
+            0,
             true,
             true,
             new Automne(),

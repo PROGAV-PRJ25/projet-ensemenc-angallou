@@ -1,7 +1,7 @@
 public class FleurDeFeu : Plante
 {
     public Inventaire inventaire;
-    public FleurDeFeu(int X, int Y, Inventaire inv) : base("Fleur de feu", X, Y, true, false, new Ete(), new Volcan(), 1, 1, 1, 0.3, 0.7, 15, 40, new Glaglaose(), 20, 0)
+    public FleurDeFeu(Inventaire inv) : base("Fleur de feu", 0, 0, true, false, new Ete(), new Volcan(), 1, 1, 1, 0.3, 0.7, 15, 40, new Glaglaose(), 20, 0)
     {
         emoji = "🔥";
         inventaire = inv;
