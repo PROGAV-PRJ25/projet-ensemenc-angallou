@@ -12,5 +12,7 @@ public class FleurDeFeu : Plante
         // Ajouter boules de feu à l'inventaire
     }
     public override bool ResisteAuFeu()
+    { 
         return true;
+    }
 }

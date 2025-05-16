@@ -62,7 +62,6 @@ public class Grille
     {
         if (x >= 0 && x < lignes && y >= 0 && y < colonnes)
         {
-<<<<<<< HEAD
             p.x = x;
             p.y = y;
             cases[x, y].plante = p;
@@ -70,11 +69,22 @@ public class Grille
         else
         {
             Console.WriteLine("Coordonnées invalides, impossible de placer la plante.");
-=======
-            cases[x, y].plante = p;
-            p.x = x;
-            p.y = y;
->>>>>>> 0d229080381b6fb248bd357a88738404ec94ead0
         }
+    }
+    public List<Case> RecupererVoisines(int X, int Y)
+    {
+        List<Case> voisines = new List<Case>();
+        int[] dx = { -1, 1, 0, 0 }; // haut et bas
+        int[] dy = { 0, 0, -1, 1 }; // gauche et droite
+        for (int i = 0; i < 4; i++)
+        {
+            int nx = X + dx[i];
+            int ny = Y + dy[i];
+            if (nx >= 0 && nx < lignes && ny >= 0 && ny < colonnes)
+            {
+                voisines.Add(cases[nx, ny]);
+            }
+        }
+        return voisines;
     }
 }

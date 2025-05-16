@@ -5,7 +5,9 @@ public class Fromage : Terrain
         nom = "Fromage";
     }
     public override string RecupererTerrain()
+    {
         return "🟨";
+    }
     public override void ReagirASaison(Saison saison)
     {
         if (saison.nom == "Été")

@@ -12,5 +12,8 @@ public class FleurDeGlace : Plante
         // Ajouter boules de glace à l'inventaire
     }
     public override bool ResisteAuFroid()
+    {
         return true;
+    }
+
 }

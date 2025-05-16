@@ -5,5 +5,7 @@ public class Volcan : Terrain
         nom = "Volcan";
     }
     public override string RecupererTerrain()
+    {
         return "🟥";
+    }
 }
