@@ -11,6 +11,15 @@ public class Case
         terrain = ter;
         plante = null;
     }
+    public string AfficherEmoji()
+    {
+        if (plante != null)
+            return plante.RecupererEmoji();
+        else if (terrain != null)
+            return terrain.RecupererTerrain(); 
+        else
+            return "   ";
+    }
     public bool EstVide()
     {
         return plante == null;

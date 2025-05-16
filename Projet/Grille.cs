@@ -52,10 +52,8 @@ public class Grille
 
             if (ligne == (lignes / 2) && colonne == (colonnes / 2)) // si on est à la ligne centrale, on n'affiche que des blocs spéciaux
                 Console.Write("║ ▒▒ ");
-            else if (c.plante != null)
-                Console.Write($"║ {c.plante.nom[0]} ");
             else
-                Console.Write("║   ");
+                Console.Write($"║ {c.AfficherEmoji()} ");
         }
         Console.WriteLine("║");
     }
@@ -64,6 +62,7 @@ public class Grille
     {
         if (x >= 0 && x < lignes && y >= 0 && y < colonnes)
         {
+<<<<<<< HEAD
             p.x = x;
             p.y = y;
             cases[x, y].plante = p;
@@ -71,6 +70,11 @@ public class Grille
         else
         {
             Console.WriteLine("Coordonnées invalides, impossible de placer la plante.");
+=======
+            cases[x, y].plante = p;
+            p.x = x;
+            p.y = y;
+>>>>>>> 0d229080381b6fb248bd357a88738404ec94ead0
         }
     }
 }

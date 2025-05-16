@@ -25,6 +25,7 @@ public class ArbreACheddar : Plante
             5
         )
     {
+        emoji = "🧀";
         inventaire = inv;
     }
 
