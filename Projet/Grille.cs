@@ -7,24 +7,24 @@ public class Grille
     {
         lignes = 6;
         colonnes = 6;
-        cases = new Case[lignes,colonnes]; // Grille 6x6
+        cases = new Case[lignes, colonnes]; // Grille 6x6
 
         // Création de chaque case de la grille
         for (int i = 0; i < lignes; i++)
         {
             for (int j = 0; j < colonnes; j++)
             {
-                cases[i,j] = new Case(i,j); 
+                cases[i, j] = new Case(i, j);
             }
         }
     }
     public void Afficher() // Affiche toute la grille
     {
-        Console.Clear(); 
+        Console.Clear();
 
         for (int i = 0; i < lignes; i++)
         {
-            AfficherLigneSeparatrice(i == lignes/2); // Affiche les bordures de cases
+            AfficherLigneSeparatrice(i == lignes / 2); // Affiche les bordures de cases
             AfficherLigneContenu(i); // Affiche le contenu des cases
         }
         AfficherLigneSeparatrice(false); // Affiche la dernière bordure, pas besoin de bloc spécial ici
@@ -44,19 +44,22 @@ public class Grille
     {
         for (int colonne = 0; colonne < colonnes; colonne++)
         {
-            Case c = cases[ligne,colonne];
-            
-            if (ligne == (lignes/2) && colonne == (colonnes/2)) // si on est à la ligne centrale, on n'affiche que des blocs spéciaux
+            Case c = cases[ligne, colonne];
+
+            if (ligne == (lignes / 2) && colonne == (colonnes / 2)) // si on est à la ligne centrale, on n'affiche que des blocs spéciaux
                 Console.Write("║ ▒▒ ");
-            else if (c.plante != null)
-                Console.Write($"║ {c.plante.nom[0]} ");
             else
-                Console.Write("║   ");
+                Console.Write($"║ {c.AfficherEmoji()} ");
         }
         Console.WriteLine("║");
     }
     public void PlacerPlante(int x, int y, Plante p)
     {
-
+        if (x >= 0 && x < lignes && y >= 0 && y < colonnes)
+        {
+            cases[x, y].plante = p;
+            p.x = x;
+            p.y = y;
+        }
     }
 }

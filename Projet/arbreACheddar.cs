@@ -4,6 +4,7 @@ public class ArbreACheddar : Plante
     private static Random rng = new Random();
     public ArbreACheddar(int X, int Y, Inventaire inv) : base("Arbre à Cheddar", X, Y, true, true, new Automne(), new Fromage(), 1, 3, 1, 0.6, 0.5, 10, 25, new Toxinelles(), 50, 4)
     {
+        emoji = "🧀";
         inventaire = inv;
     }
     public override void ActiverPouvoirSpecial()

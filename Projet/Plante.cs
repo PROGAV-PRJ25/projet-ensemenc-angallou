@@ -18,7 +18,8 @@ public abstract class Plante
     public Maladie maladie { get; set; }
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
-    public Plante(string Nom, int X, int Y, bool Etat, bool Miam, Saison SaisonM, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere,int TempMin, int TempMax, Maladie Maladie, int EsperanceVie, int NbFruits)
+    public string emoji { get; set; }
+    public Plante(string Nom, int X, int Y, bool Etat, bool Miam, Saison SaisonM, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, Maladie Maladie, int EsperanceVie, int NbFruits)
     {
         nom = Nom;
         x = X;
@@ -38,7 +39,7 @@ public abstract class Plante
         esperanceVie = EsperanceVie;
         nbFruits = NbFruits;
     }
-    public double Satisfaction(Terrain TerrainActuel,bool Espacement, double Eau, double Lumiere, int Temp) // Satisfaction varie de 0 à 1
+    public double Satisfaction(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp) // Satisfaction varie de 0 à 1
     {
         double tauxSatisfaction = 0;
         if (TerrainActuel == terrainPref)
@@ -53,7 +54,7 @@ public abstract class Plante
             tauxSatisfaction += 0.2;
         return tauxSatisfaction;
     }
-    public void Croissance(Terrain TerrainActuel,bool Espacement, double Eau, double Lumiere, int Temp)
+    public void Croissance(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp)
     {
         double satisfaction = Satisfaction(TerrainActuel, Espacement, Eau, Lumiere, Temp);
         if (etat == true) // si la plante est toujours vivante
@@ -93,7 +94,15 @@ public abstract class Plante
     {
         string statut = etat ? "Vivante" : "Morte" // si etat == true, affiche "Vivante" sinon "Morte"
         string infoMaladie = maladie != null ? maladie.GetType().Name : "Aucune"; // si a une maladie, affiche le nom de la maladie sinon affiche "Aucune"
-        Console.WriteLine($"{nom} - Statut : {statut} - Taille : {place} - Fruits : {nbFruits} - Maladie : {infoMaladie}"); 
+        Console.WriteLine($"{nom} - Statut : {statut} - Taille : {place} - Fruits : {nbFruits} - Maladie : {infoMaladie}");
     }
     public virtual void ActiverPouvoirSpecial() { } // toutes les plantes n'auront pas forcément de pouvoir spécial
+    public virtual string RecupererEmoji()
+    {
+        if (!etat)
+            return "☠️"; //la plante est morte
+        if (maladie != null)
+            return "🤢"; //la plante est malade
+        return emoji;
+    }
 }
