@@ -2,10 +2,32 @@ public class ArbreACheddar : Plante
 {
     public Inventaire inventaire;
     private static Random rng = new Random();
-    public ArbreACheddar(int X, int Y, Inventaire inv) : base("Arbre à Cheddar", X, Y, true, true, new Automne(), new Fromage(), 1, 3, 1, 0.6, 0.5, 10, 25, new Toxinelles(), 50, 4)
+
+    public ArbreACheddar(int X, int Y, Inventaire inv)
+        : base(
+            "Arbre à Cheddar",
+            X,
+            Y,
+            true,
+            true,
+            new Automne(),
+            new Fromage(),
+            1,
+            3,
+            1,
+            0.6,
+            0.5,
+            10,
+            25,
+            //new Toxinelles(),
+            50,
+            4,
+            5
+        )
     {
         inventaire = inv;
     }
+
     public override void ActiverPouvoirSpecial()
     {
         int alea = rng.Next(100); // calcule une proba entre 0 et 99

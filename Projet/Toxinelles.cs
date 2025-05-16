@@ -2,11 +2,14 @@ public class Toxinelles : Maladie
 {
     public bool digestion { get; set; }
     public int delaiSurvie { get; set; }
-    public Toxinelles(int X, int Y) : base(X, Y, false, 100, "Plantes Carnivores", typeof(ArbreACheddar)) { }
+
+    public Toxinelles(int X, int Y)
+        : base(X, Y, false, 100, "Plantes Carnivores", typeof(ArbreACheddar))
     {
         digestion = false;
         delaiSurvie = 3;
     }
+
     public override void Infecter(Plante plante)
     {
         if (EstPlanteCible(plante))
@@ -16,7 +19,7 @@ public class Toxinelles : Maladie
             Console.WriteLine($"{plante.nom} a été infecté par des toxinelles !");
         }
     }
-    public void Agoniser(Plante plante)
+    /* public void Agoniser(Plante plante)
     {
         if (digestion)
         {
@@ -27,5 +30,5 @@ public class Toxinelles : Maladie
                 Console.WriteLine($"{plante.nom} est mort : les toxinelles ont eu raison de votre plante !");
             }
         }
-    }
+    } */
 }
