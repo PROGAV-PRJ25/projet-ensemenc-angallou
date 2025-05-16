@@ -15,8 +15,7 @@
         bool ModeUrgence,
         double Attaque,
         string Faiblesse,
-        Type TypePlanteCible,
-        double Gravite = 0.3
+        Type TypePlanteCible
     )
     {
         x = X;
@@ -25,7 +24,7 @@
         attaque = Attaque;
         faiblesse = Faiblesse;
         typePlanteCible = TypePlanteCible;
-        gravite = modeUrgence ? 0.5 : 0.2;
+        gravite = modeUrgence ? 0.5 : 0.2; // Définition automatique de la gravité en fonction du mode d'urgence
     }
 
     public virtual bool EstPlanteCible(Plante plante)

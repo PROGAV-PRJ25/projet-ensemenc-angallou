@@ -19,7 +19,6 @@ public abstract class Plante
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
     public string emoji { get; set; }
-    public Plante(string Nom, int X, int Y, bool Etat, bool Miam, Saison SaisonM, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, Maladie Maladie, int EsperanceVie, int NbFruits)
 
     public Plante(
         string Nom,
@@ -59,7 +58,6 @@ public abstract class Plante
         esperanceVie = EsperanceVie;
         nbFruits = NbFruits;
     }
-    public double Satisfaction(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp) // Satisfaction varie de 0 à 1
 
     public double Satisfaction(
         Terrain TerrainActuel,
@@ -84,7 +82,6 @@ public abstract class Plante
             tauxSatisfaction -= maladie.gravite;
         return Math.Clamp(tauxSatisfaction, 0.0, 1.0); //Math.Clamp(...) permet de forcer tauxSatisfaction à rester entre 0 et 1.
     }
-    public void Croissance(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp)
 
     public void Croissance(
         Terrain TerrainActuel,
@@ -135,13 +132,16 @@ public abstract class Plante
     {
         string statut = etat ? "Vivante" : "Morte"; // si etat == true, affiche "Vivante" sinon "Morte"
         string infoMaladie = maladie != null ? maladie.GetType().Name : "Aucune"; // si a une maladie, affiche le nom de la maladie sinon affiche "Aucune"
-        Console.WriteLine($"{nom} - Statut : {statut} - Taille : {place} - Fruits : {nbFruits} - Maladie : {infoMaladie}");
+        Console.WriteLine(
+            $"{nom} - Statut : {statut} - Taille : {place} - Fruits : {nbFruits} - Maladie : {infoMaladie}"
+        );
         Console.WriteLine(
             $"{nom} - Statut : {statut} - Taille : {place} - Fruits : {nbFruits} - Maladie : {infoMaladie}"
         );
     }
 
     public virtual void ActiverPouvoirSpecial() { } // toutes les plantes n'auront pas forcément de pouvoir spécial
+
     public virtual string RecupererEmoji()
     {
         if (!etat)
