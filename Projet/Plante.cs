@@ -83,7 +83,7 @@ public abstract class Plante
         return Math.Clamp(tauxSatisfaction, 0.0, 1.0); //Math.Clamp(...) permet de forcer tauxSatisfaction à rester entre 0 et 1.
     }
 
-    public void Croissance(
+    public virtual void Croissance(
         Terrain TerrainActuel,
         bool Espacement,
         double Eau,

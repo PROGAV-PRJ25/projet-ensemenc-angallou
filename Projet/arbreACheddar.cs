@@ -19,7 +19,7 @@ public class ArbreACheddar : Plante
             0.5,
             10,
             25,
-            //new Toxinelles(),
+            new Toxinelles(),
             50,
             4,
             5

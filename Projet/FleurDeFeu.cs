@@ -11,8 +11,10 @@ public class FleurDeFeu : Plante
         Console.WriteLine($"{nom} a donné une boule de feu !");
         // Ajouter boules de feu à l'inventaire
     }
+    /*
     public override bool ResisteAuFeu()
-    { 
+    {
         return true;
     }
+    */
 }

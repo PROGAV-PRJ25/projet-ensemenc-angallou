@@ -10,8 +10,8 @@ public abstract class Saison
     public Saison(string Nom, double PluieMoyenne, double SoleilMoyen)
     {
         nom = Nom;
-        pluieMoyenne = Pluie;
-        soleilMoyen = Soleil;
+        pluieMoyenne = PluieMoyenne;
+        soleilMoyen = SoleilMoyen;
         CalculerMeteo();
     }
     public void CalculerMeteo()
@@ -33,7 +33,7 @@ public abstract class Saison
     }
     public override string ToString()
     {
-        return $"{Nom} - Pluie : {pluieActuelle*100}% - Soleil : {soleilActuel*100}% - Température : {temperatureActuelle}°C";
+        return $"{nom} - Pluie : {pluieActuelle*100}% - Soleil : {soleilActuel*100}% - Température : {temperatureActuelle}°C";
     }
     public abstract int RecupererTempMin();
     public abstract int RecupererTempMax();

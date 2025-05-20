@@ -11,9 +11,11 @@ public class FleurDeGlace : Plante
         Console.WriteLine($"{nom} a donné une boule de glace !");
         // Ajouter boules de glace à l'inventaire
     }
+    /*
     public override bool ResisteAuFroid()
     {
         return true;
     }
+    */
 
 }

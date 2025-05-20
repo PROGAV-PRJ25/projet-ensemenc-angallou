@@ -19,7 +19,7 @@ public class Toxinelles : Maladie
             Console.WriteLine($"{plante.nom} a été infecté par des toxinelles !");
         }
     }
-    /* public void Agoniser(Plante plante)
+    public void Agoniser(Plante plante)
     {
         if (digestion)
         {
@@ -30,5 +30,5 @@ public class Toxinelles : Maladie
                 Console.WriteLine($"{plante.nom} est mort : les toxinelles ont eu raison de votre plante !");
             }
         }
-    } */
+    } 
 }

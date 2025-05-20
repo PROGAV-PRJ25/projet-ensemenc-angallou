@@ -55,7 +55,7 @@ public class Simulation
         Console.WriteLine($"\n Semaine n°{calendrier.semaine} - {saison}");
 
         // Réactions en fonction des saisons
-        foreach (var c in grille.Cases())
+        foreach (var c in grille.cases)
         {
             c.terrain?.ReagirASaison(saison);
         }
