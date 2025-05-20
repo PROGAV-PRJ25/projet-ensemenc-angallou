@@ -1,11 +1,32 @@
 public class FleurDeGlace : Plante
 {
     public Inventaire inventaire;
-    public FleurDeGlace(Inventaire inv) : base("Fleur de glace", 0, 0, true, false, new Hiver(), new Ocean(), 1, 1, 1, 0.7, 0.3, -10, 15, new QueCalorose(), 20, 0)
+
+    public FleurDeGlace(Inventaire inv)
+        : base(
+            "Fleur de glace",
+            0,
+            0,
+            true,
+            false,
+            new Hiver(),
+            new Ocean(),
+            1,
+            1,
+            1,
+            0.7,
+            0.3,
+            -10,
+            15,
+            new QueCalorose(),
+            20,
+            0
+        )
     {
         emoji = "❄️";
         inventaire = inv;
     }
+
     public override void ActiverPouvoirSpecial()
     {
         Console.WriteLine($"{nom} a donné une boule de glace !");
@@ -17,5 +38,4 @@ public class FleurDeGlace : Plante
         return true;
     }
     */
-
 }
