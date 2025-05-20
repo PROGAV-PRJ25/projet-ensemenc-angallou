@@ -1,7 +1,5 @@
 public class Glaglaose : Maladie
 {
-    public int delaiSurvie { get; set; }
-
     public Glaglaose(int X, int Y)
         : base(X, Y, false, 100, "Boule de feu", typeof(FleurDeFeu))
     {
@@ -17,6 +15,7 @@ public class Glaglaose : Maladie
             Console.WriteLine($"{plante.nom} a attrapé la glaglaose !");
         }
     }
+
     public void Agoniser(Plante plante)
     {
         if (digestion)
@@ -25,9 +24,10 @@ public class Glaglaose : Maladie
             if (delaiSurvie == 0)
             {
                 plante.etat = false;
-                Console.WriteLine($"{plante.nom} est mort : la glaglaose a eu raison de votre plante !");
+                Console.WriteLine(
+                    $"{plante.nom} est mort : la glaglaose a eu raison de votre plante !"
+                );
             }
         }
-    } 
+    }
 }
-

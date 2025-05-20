@@ -15,10 +15,10 @@ public abstract class Plante
     public double besoinLumiere { get; set; }
     public int tempMin { get; set; }
     public int tempMax { get; set; }
-    public Maladie maladie { get; set; }
+    public Maladie maladie;
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
-    public string emoji { get; set; }
+    public string emoji;
 
     public Plante(
         string Nom,
@@ -35,7 +35,7 @@ public abstract class Plante
         double BesoinLumiere,
         int TempMin,
         int TempMax,
-        Maladie Maladie,
+        //Maladie Maladie,
         int EsperanceVie,
         int NbFruits
     )
@@ -54,7 +54,7 @@ public abstract class Plante
         besoinLumiere = BesoinLumiere; // si respecté, augmente
         tempMin = TempMin; // si moins diminue
         tempMax = TempMax; // si plus diminue
-        maladie = Maladie; //maladie à laquelle la plante est la plus sensible
+        //maladie = Maladie; //maladie à laquelle la plante est la plus sensible
         esperanceVie = EsperanceVie;
         nbFruits = NbFruits;
     }

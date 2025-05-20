@@ -1,7 +1,6 @@
 public class ArbreACheddar : Plante
 {
     public Inventaire inventaire;
-    private static Random rng = new Random();
 
     public ArbreACheddar(Inventaire inv)
         : base(
@@ -19,13 +18,11 @@ public class ArbreACheddar : Plante
             0.5,
             10,
             25,
-            new Toxinelles(),
             50,
             4,
-            5
+            "🧀"
         )
     {
-        emoji = "🧀";
         inventaire = inv;
     }
 

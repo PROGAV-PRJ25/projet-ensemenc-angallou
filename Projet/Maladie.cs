@@ -7,6 +7,9 @@
     public string faiblesse { get; set; }
     public Type typePlanteCible { get; set; } // Type de plante visée par la maladie
     public double gravite { get; set; } // Taux de réduction de satisfaction (ex: 0.3)
+    public bool digestion { get; set; }
+    public int delaiSurvie { get; set; }
+
     public Maladie(
         int X,
         int Y,
@@ -22,7 +25,7 @@
         attaque = Attaque;
         faiblesse = Faiblesse;
         typePlanteCible = TypePlanteCible;
-        gravite = modeUrgence ? 0.5 : 0.2; // Définition automatique de la gravité en fonction du mode d'urgence
+        gravite = modeUrgence ? 0.5 : 0.2; // Définition automatique de la gravité en fonction du mode d'urgence. Si c'est true alors c'est 0.5, etc.
     }
 
     public virtual bool EstPlanteCible(Plante plante)

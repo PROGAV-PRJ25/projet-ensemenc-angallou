@@ -1,9 +1,10 @@
 public class ArcEnCiel : Terrain
 {
-    public ArcEnCiel() 
+    public ArcEnCiel()
     {
         nom = "ArcEnCiel";
     }
+
     public override string RecupererTerrain()
     {
         return "🌈";

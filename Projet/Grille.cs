@@ -71,6 +71,7 @@ public class Grille
             Console.WriteLine("Coordonnées invalides, impossible de placer la plante.");
         }
     }
+
     public List<Case> RecupererVoisines(int X, int Y)
     {
         List<Case> voisines = new List<Case>();
