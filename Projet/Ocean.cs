@@ -4,10 +4,12 @@ public class Ocean : Terrain
     {
         nom = "Océan";
     }
+
     public override string RecupererTerrain()
     {
         return "🟦";
     }
+
     public override void ReagirASaison(Saison saison)
     {
         if (saison.nom == "Hiver")

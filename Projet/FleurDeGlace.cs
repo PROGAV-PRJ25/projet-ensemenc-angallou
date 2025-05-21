@@ -18,12 +18,11 @@ public class FleurDeGlace : Plante
             0.3,
             -10,
             15,
-            new QueCalorose(),
             20,
-            0
+            0,
+            "❄️"
         )
     {
-        emoji = "❄️";
         inventaire = inv;
     }
 

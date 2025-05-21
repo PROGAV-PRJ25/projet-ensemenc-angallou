@@ -5,6 +5,7 @@ public class Inventaire
     public int nbEtoiles;
     public int nbBoulesFeu;
     public int nbBoulesGlace;
+
     public Inventaire()
     {
         nbEclairs = 0;
@@ -13,6 +14,7 @@ public class Inventaire
         nbBoulesFeu = 0;
         nbBoulesGlace = 0;
     }
+
     public void Ajouter(string type)
     {
         if (type == "éclair")

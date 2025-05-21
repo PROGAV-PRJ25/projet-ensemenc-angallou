@@ -1,7 +1,5 @@
 public class QueCalorose : Maladie
 {
-    public int delaiSurvie { get; set; }
-
     public QueCalorose(int X, int Y)
         : base(X, Y, false, 100, "Boule de glace", typeof(FleurDeGlace))
     {
@@ -17,6 +15,7 @@ public class QueCalorose : Maladie
             Console.WriteLine($"{plante.nom} a attrapé la quécalorose !");
         }
     }
+
     public void Agoniser(Plante plante)
     {
         if (digestion)
@@ -25,10 +24,10 @@ public class QueCalorose : Maladie
             if (delaiSurvie == 0)
             {
                 plante.etat = false;
-                Console.WriteLine($"{plante.nom} est mort : la quécalorose a eu raison de votre plante !");
+                Console.WriteLine(
+                    $"{plante.nom} est mort : la quécalorose a eu raison de votre plante !"
+                );
             }
         }
-    } 
+    }
 }
-
-
