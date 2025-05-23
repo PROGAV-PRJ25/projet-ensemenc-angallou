@@ -1,11 +1,41 @@
 public class FleurDeGlace : Plante
 {
+<<<<<<< HEAD
     public Inventaire inventaire; // On a besoin de l'inventaire car cette plante donne des boules de glace
     public FleurDeGlace(Inventaire inv) : base("Fleur de glace", 0, 0, true, false, new Hiver(), new Ocean(), 0, 1, 4, 0.7, 0.3, -10, 15, 20, 0)
     {
         inventaire = inv;
     }
     public override void RecupererObjet() // Permet d'ajouter une boule de feu à l'inventaire
+=======
+    public Inventaire inventaire;
+
+    public FleurDeGlace(Inventaire inv)
+        : base(
+            "Fleur de glace",
+            0,
+            0,
+            true,
+            false,
+            new Hiver(),
+            new Ocean(),
+            1,
+            1,
+            1,
+            0.7,
+            0.3,
+            -10,
+            15,
+            20,
+            0,
+            "❄️"
+        )
+    {
+        inventaire = inv;
+    }
+
+    public override void ActiverPouvoirSpecial()
+>>>>>>> refs/remotes/origin/main
     {
         Console.WriteLine($"{nom} a donné une boule de glace !");
         inventaire.nbBoulesGlace++; // Ajouter boules de glace à l'inventaire
@@ -17,5 +47,4 @@ public class FleurDeGlace : Plante
         return true;
     }
     */
-
 }

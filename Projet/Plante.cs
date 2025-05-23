@@ -15,6 +15,7 @@ public abstract class Plante
     public double besoinLumiere { get; set; }
     public int tempMin { get; set; }
     public int tempMax { get; set; }
+<<<<<<< HEAD
     public Maladie? maladie { get; set; }
     public int esperanceVie { get; set; }
     public int nbFruits { get; set; }
@@ -22,10 +23,37 @@ public abstract class Plante
     public bool boostSatisfaction { get; set; }
     public int semaineDepuisSemis { get; set; }  
     public Plante(string Nom, int X, int Y, bool Etat, bool Miam, Saison SaisonM, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, int EsperanceVie, int NbFruits)
+=======
+    public Maladie maladie;
+    public int esperanceVie { get; set; }
+    public int nbFruits { get; set; }
+    public string emoji;
+
+    public Plante(
+        string Nom,
+        int X,
+        int Y,
+        bool Etat,
+        bool Miam,
+        Saison SaisonM,
+        Terrain TerrainPref,
+        int Espacement,
+        int Place,
+        int Vitesse,
+        double BesoinEau,
+        double BesoinLumiere,
+        int TempMin,
+        int TempMax,
+        //Maladie Maladie,
+        int EsperanceVie,
+        int NbFruits
+    )
+>>>>>>> refs/remotes/origin/main
     {
         nom = Nom;
         x = X;
         y = Y;
+<<<<<<< HEAD
         etat = Etat; // Indique si la plante est vivante ou non --> false si satisfaction < 0.5
         miam = Miam; // Indique si la plante est comestible ou non
         saison = SaisonM; // Correspond à la saison de semis
@@ -41,6 +69,22 @@ public abstract class Plante
         nbFruits = NbFruits; // Nombre de fruits cueillables chaque semaine quand la plante est mature
         boostSatisfaction = false; // Pas de boost de satisfaction par défaut
         semaineDepuisSemis = 0; // Correspond à l'âge de la plante (en semaines)
+=======
+        etat = Etat; //false si satisfaction < 0.5
+        miam = Miam;
+        saison = SaisonM;
+        terrainPref = TerrainPref; // si le terrain est le préféré, alors la satisfaction augmente
+        espacement = Espacement; // si espacement respecté, alors la satisfaction augmente
+        place = Place; // si il y a de la place, alors elle va croitre
+        vitesse = Vitesse;
+        besoinEau = BesoinEau; //si respecté, augmente
+        besoinLumiere = BesoinLumiere; // si respecté, augmente
+        tempMin = TempMin; // si moins diminue
+        tempMax = TempMax; // si plus diminue
+        //maladie = Maladie; //maladie à laquelle la plante est la plus sensible
+        esperanceVie = EsperanceVie;
+        nbFruits = NbFruits;
+>>>>>>> refs/remotes/origin/main
     }
 
     public double Satisfaction(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp) // Renvoie le taux de satisfaction de la plante (varie de 0 à 1)
