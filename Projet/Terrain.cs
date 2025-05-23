@@ -1,7 +1,6 @@
 public abstract class Terrain
 {
-    public string nom { get; set; }
+    public string? nom;
     public Terrain() { }
-    public abstract string RecupererTerrain();
     public virtual void ReagirASaison(Saison saison) { }
 }

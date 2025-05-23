@@ -4,11 +4,7 @@ public class Fromage : Terrain
     {
         nom = "Fromage";
     }
-    public override string RecupererTerrain()
-    {
-        return "🟨";
-    }
-    public override void ReagirASaison(Saison saison)
+    public override void ReagirASaison(Saison saison) // Le terrain fromage fond en été, ce qui a des répercussions (non implémenté)
     {
         if (saison.nom == "Été")
             Console.WriteLine("Le terrain fromage a fondu !");

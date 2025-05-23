@@ -1,32 +1,32 @@
 public class Toxinelles : Maladie
 {
-    public bool digestion { get; set; }
-    public int delaiSurvie { get; set; }
-
-    public Toxinelles(int X, int Y)
-        : base(X, Y, false, 100, "Plantes Carnivores", typeof(ArbreACheddar))
+    public bool digestion { get; set; } // Indique si les toxinelles sont en train d'infecter une plante ou non
+    public int delaiSurvie { get; set; } // Correspond au nombre de semaines restant avant que les toxinelles finissent par tuer la plante
+    // Maladie ciblant les arbres à cheddar mais sensible aux plantes carnivores
+    public Toxinelles(int X, int Y) : base(X, Y, "Plante Carnivore", typeof(ArbreACheddar))
     {
-        digestion = false;
-        delaiSurvie = 3;
+        digestion = false; // Par défaut, la maladie n'a pas encore infecté de plante
+        delaiSurvie = 3; // Compte à rebours avant la mort si les toxinelles n'ont pas été anéanties
+        gravite = 0; // Les toxinelles ne réduisent pas le taux de satisfaction, car elles sont une menace à court terme
     }
 
-    public override void Infecter(Plante plante)
+    public override void Infecter(Plante plante) // Méthode permettant d'infecter une plante
     {
-        if (EstPlanteCible(plante))
+        if (EstPlanteCible(plante) && plante.maladie == null) // Si la plante n'est pas malade et est la cible privilégiée des toxinelles (ici Arbre à cheddar)
         {
-            digestion = true;
-            delaiSurvie = 3; // compte à rebours avant la mort si les toxinelles n'ont pas été anéanties
+            digestion = true; // Les toxinelles ont infecté la plante
             Console.WriteLine($"{plante.nom} a été infecté par des toxinelles !");
         }
     }
-    public void Agoniser(Plante plante)
+
+    public void Agoniser(Plante plante) // Méthode qui modélise l'effet des toxinelles sur la plante
     {
-        if (digestion)
+        if (digestion && delaiSurvie > 0) // Si les toxinelles ont infecté la plante et que le délai de survie n'est pas encore atteint
         {
-            delaiSurvie--;
-            if (delaiSurvie == 0)
+            delaiSurvie--; // La plante se rapproche du moment fatidique
+            if (delaiSurvie == 0) // Si le délai est écoulé 
             {
-                plante.etat = false;
+                plante.etat = false; // La plante est morte
                 Console.WriteLine($"{plante.nom} est mort : les toxinelles ont eu raison de votre plante !");
             }
         }

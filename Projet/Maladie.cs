@@ -2,48 +2,27 @@
 {
     public int x { get; set; }
     public int y { get; set; }
-    public bool modeUrgence { get; set; }
-    public double attaque { get; set; } // Potentiel de dégâts directs (ex: perte de vie)
-    public string faiblesse { get; set; }
+    public string faiblesse { get; set; } // Faiblesse de la maladie
     public Type typePlanteCible { get; set; } // Type de plante visée par la maladie
-    public double gravite { get; set; } // Taux de réduction de satisfaction (ex: 0.3)
-    public Maladie(
-        int X,
-        int Y,
-        bool ModeUrgence,
-        double Attaque,
-        string Faiblesse,
-        Type TypePlanteCible
-    )
+    public double gravite { get; set; } // Taux de réduction de satisfaction de la plante (ex: 0.3)
+    public Maladie(int X, int Y, string Faiblesse, Type TypePlanteCible)
     {
         x = X;
         y = Y;
-        modeUrgence = ModeUrgence;
-        attaque = Attaque;
         faiblesse = Faiblesse;
         typePlanteCible = TypePlanteCible;
-        gravite = modeUrgence ? 0.5 : 0.2; // Définition automatique de la gravité en fonction du mode d'urgence
+        gravite = 0.3; // Gravité constante
     }
-
-    public virtual bool EstPlanteCible(Plante plante)
+    public virtual bool EstPlanteCible(Plante plante) // Renvoie un booléen indiquant si la maladie peut infecter la plante ou non
     {
         return plante.GetType() == typePlanteCible;
     }
-
-    public virtual void Infecter(Plante plante)
+    public virtual void Infecter(Plante plante) // Méthode permettant d'infecter la plante rentrée en paramètre
     {
-        if (plante.maladie == null)
+        if (plante.maladie == null) // Si la plante n'est pas déjà malade
         {
-            plante.maladie = this;
+            plante.maladie = this; // Alors elle attrape cette maladie
             Console.WriteLine($"{plante.nom} a été infectée par {this.GetType().Name} !");
         }
     }
 }
-
-//gérer le mode urgence
-//gérer les différentes maladies
-// gérer les différentes attaques
-//est-ce que je met un bool il y a plante ? mehhh on verra ça dans les codes au cas par cas
-// Ne pas oublier de faire le mode urgence et les différentes manières de se protéger des invasions
-
-// faiblesse TODO
