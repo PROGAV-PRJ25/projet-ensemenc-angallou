@@ -20,8 +20,26 @@ public abstract class Plante
     public int nbFruits { get; set; }
     public string? emoji { get; set; }
     public bool boostSatisfaction { get; set; }
-    public int semaineDepuisSemis { get; set; }  
-    public Plante(string Nom, int X, int Y, bool Etat, bool Miam, Saison SaisonM, Terrain TerrainPref, int Espacement, int Place, int Vitesse, double BesoinEau, double BesoinLumiere, int TempMin, int TempMax, int EsperanceVie, int NbFruits)
+    public int semaineDepuisSemis { get; set; }
+
+    public Plante(
+        string Nom,
+        int X,
+        int Y,
+        bool Etat,
+        bool Miam,
+        Saison SaisonM,
+        Terrain TerrainPref,
+        int Espacement,
+        int Place,
+        int Vitesse,
+        double BesoinEau,
+        double BesoinLumiere,
+        int TempMin,
+        int TempMax,
+        int EsperanceVie,
+        int NbFruits
+    )
     {
         nom = Nom;
         x = X;
@@ -43,7 +61,13 @@ public abstract class Plante
         semaineDepuisSemis = 0; // Correspond à l'âge de la plante (en semaines)
     }
 
-    public double Satisfaction(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp) // Renvoie le taux de satisfaction de la plante (varie de 0 à 1)
+    public double Satisfaction(
+        Terrain TerrainActuel,
+        bool Espacement,
+        double Eau,
+        double Lumiere,
+        int Temp
+    ) // Renvoie le taux de satisfaction de la plante (varie de 0 à 1)
     {
         if (boostSatisfaction) // Si un boost de satisfaction a été obtenu (en utilisant une étoile sur une plante)
         {
@@ -53,7 +77,7 @@ public abstract class Plante
 
         double tauxSatisfaction = 0;
         if (TerrainActuel == terrainPref) // Si le terrain sur lequel la plante pousse est son terrain préféré (+20% de satisfaction)
-            tauxSatisfaction += 0.2; 
+            tauxSatisfaction += 0.2;
         if (Espacement) // Espacement est ici un booléen qui prend la valeur true, si espacement <= place, donc si la plante possède suffisament de place pour pousser (+20% de satisfaction)
             tauxSatisfaction += 0.2;
         if (Eau >= besoinEau) // Si le taux d'eau actuel auquel la plante a accès est supérieur ou égal au taux dont elle a besoin (+20% de satisfaction)
@@ -67,7 +91,13 @@ public abstract class Plante
         return Math.Clamp(tauxSatisfaction, 0.0, 1.0); //Math.Clamp(...) permet de forcer tauxSatisfaction à rester entre 0 et 1.
     }
 
-    public virtual void Croissance(Terrain TerrainActuel, bool Espacement, double Eau, double Lumiere, int Temp) // Méthode permettant d'ajuster la vitesse de croissance de la plante soit le nombre de semaines qui lui faut pour devenir mature
+    public virtual void Croissance(
+        Terrain TerrainActuel,
+        bool Espacement,
+        double Eau,
+        double Lumiere,
+        int Temp
+    ) // Méthode permettant d'ajuster la vitesse de croissance de la plante soit le nombre de semaines qui lui faut pour devenir mature
     {
         double satisfaction = Satisfaction(TerrainActuel, Espacement, Eau, Lumiere, Temp); // On récupère le taux de satisfaction de la plante
 
@@ -82,7 +112,9 @@ public abstract class Plante
             if (satisfaction < 0.5) // Si son taux de satisfaction est inférieur à 50%
             {
                 etat = false; // La plante meurt
-                Console.WriteLine($"La plante {nom} est morte par manque de conditions satisfaisantes.");
+                Console.WriteLine(
+                    $"La plante {nom} est morte par manque de conditions satisfaisantes."
+                );
             }
             else if (satisfaction < 0.7) // Si son taux de satisfaction se situe entre 50% et 70%
             {
@@ -96,8 +128,8 @@ public abstract class Plante
                 }
             }
             else if (satisfaction >= 0.7 && satisfaction < 0.9) // Si son taux de satisfaction se situe entre 70% et 90%, sa croissance est normale donc la vitesse ne bouge pas
-            { 
-                Console.WriteLine($"La plante {nom} pousse normalement."); 
+            {
+                Console.WriteLine($"La plante {nom} pousse normalement.");
             }
             else // Si son taux de satisfaction est supérieur à 90%
             {
@@ -117,20 +149,24 @@ public abstract class Plante
         Console.WriteLine();
         if (etat) // Si la plante est vivante
         {
-            Console.WriteLine($"*** {nom} est âgé(e) de {semaineDepuisSemis} semaines (esperance de vie = {esperanceVie}) ***"); 
+            Console.WriteLine(
+                $"*** {nom} est âgé(e) de {semaineDepuisSemis} semaines (esperance de vie = {esperanceVie}) ***"
+            );
             Console.WriteLine($"- Besoin en eau: {besoinEau} - Taux actuel : {Eau}");
-            if (besoinEau > Eau) // Si le taux d'eau actuel auquel la plante a accès est inférieur au taux dont elle a besoin 
+            if (besoinEau > Eau) // Si le taux d'eau actuel auquel la plante a accès est inférieur au taux dont elle a besoin
                 Console.WriteLine("Votre plante est déshydratée !");
             else
                 Console.WriteLine("Le taux d'hydratation de votre plante est bon.");
 
             Console.WriteLine($"- Besoin en lumiere: {besoinLumiere} - Taux actuel : {Lumiere}");
-            if (besoinLumiere > Lumiere) // Si le taux de lumière actuel auquel la plante a accès est inférieur au taux dont elle a besoin 
+            if (besoinLumiere > Lumiere) // Si le taux de lumière actuel auquel la plante a accès est inférieur au taux dont elle a besoin
                 Console.WriteLine("Votre plante manque de lumière !");
             else
                 Console.WriteLine("Le taux de luminosité de votre plante est bon.");
 
-            Console.WriteLine($"- Température idéale : {tempMin} à {tempMax} - Température actuelle : {Temp}");
+            Console.WriteLine(
+                $"- Température idéale : {tempMin} à {tempMax} - Température actuelle : {Temp}"
+            );
             if (Temp < tempMin || Temp > tempMax) // Si la température actuelle dépasse les bornes de l'intervalle des températures acceptables pour la plante
                 Console.WriteLine("La température est inadaptée pour votre plante !");
             else
@@ -141,11 +177,11 @@ public abstract class Plante
         }
         else // Si la plante est morte
         {
-           Console.WriteLine($"Votre plante est morte !"); 
+            Console.WriteLine($"Votre plante est morte !");
         }
     }
 
-    public void Afficher() // Méthode permettant d'afficher des informations génériques sur la plante 
+    public void Afficher() // Méthode permettant d'afficher des informations génériques sur la plante
     {
         Console.WriteLine(
             $"{nom} - Taille : {place} - Fruits : {nbFruits} - Espacement : {espacement} - Place : {place}"
@@ -190,7 +226,7 @@ public abstract class Plante
         if (maladie != null) // Si la plante est malade
             return ConsoleColor.DarkGray; // Elle sera affichée en gris sombre
         if (!EstMature()) // Si la plante est immature
-            return ConsoleColor.White; // Elle sera affichée en blanc
+            return ConsoleColor.DarkYellow; // Elle sera affichée en jaune sombre
         return ConsoleColor.Green; // Si la plante est mature, elle sera affichée en vert
     }
 }

@@ -6,10 +6,11 @@ public class Inventaire
     public int nbBoulesFeu; // Permet de combattre la glaglaose et de dégeler le terrain Océan durant l'hiver (non implémentés)
     public int nbBoulesGlace; // Permet de combattre la quécalorose et de solidifier le terrain Fromage durant l'été (non implémentés)
     public int nbCheddar; // Peut être donné à manger à une Plante Carnivore
+
     public Inventaire()
     {
         // On commence le jeu avec un inventaire vide
-        nbEclairs = 0;
+        nbEclairs = 0; //ou 1
         nbSerums = 0;
         nbEtoiles = 0;
         nbBoulesFeu = 0;

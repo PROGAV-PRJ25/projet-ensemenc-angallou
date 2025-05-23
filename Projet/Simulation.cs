@@ -6,9 +6,15 @@ public class Simulation
     public Calendrier? calendrier;
     public Grille grille;
     public Inventaire inventaire;
-    public enum ModeJeu { Classique, Urgence } // Deux modes de jeu sont proposés
-    public ModeJeu modeActuel; 
-    private bool fin; 
+
+    public enum ModeJeu
+    {
+        Classique,
+        Urgence,
+    } // Deux modes de jeu sont proposés
+
+    public ModeJeu modeActuel;
+    private bool fin;
     public double eau;
     public double lumiere;
     public int temperature;
@@ -16,24 +22,28 @@ public class Simulation
     public Simulation()
     {
         grille = new Grille(); // Création de la grille de jeu
-        maladies = new List<Maladie>();  // Liste des maladies qui seront présentes sur la grille
+        maladies = new List<Maladie>(); // Liste des maladies qui seront présentes sur la grille
         modeActuel = ModeJeu.Classique; // Le jeu débute en mode Classique
         inventaire = new Inventaire(); // Création de l'inventaire
         fin = false; // Par défaut, le jeu n'est pas fini avant d'avoir commencé
         maladiesDisponibles = new List<Maladie>() // Liste des types de maladies non actifs sur la grille
         {
-            new Toxinelles(0, 0), 
+            new Toxinelles(0, 0),
             new Glaglaose(0, 0),
             new QueCalorose(0, 0),
         };
     }
 
-    public void LancerJeu() // Méthode principale 
+    public void LancerJeu() // Méthode principale
     {
         Console.Clear();
         Console.WriteLine("*** BIENVENUE DANS NOTRE JEU ENSEMENC VS MARIO ! ***");
-        Console.WriteLine("Aidez Toad à faire pousser le plus de plantes possible, mais attention Mario rôde en kart pas loin !");
-        Console.WriteLine("Veuillez tout d'abord choisir une saison à laquelle commencer votre partie :");
+        Console.WriteLine(
+            "Aidez Toad à faire pousser le plus de plantes possible, mais attention Mario rôde en kart pas loin !"
+        );
+        Console.WriteLine(
+            "Veuillez tout d'abord choisir une saison à laquelle commencer votre partie :"
+        );
         Console.WriteLine("1 : Hiver ----- 2 : Printemps ----- 3 : Ete ----- 4 : Automne");
 
         if (!int.TryParse(Console.ReadLine(), out int numero)) // Afin d'éviter les erreurs en console si autre saisie
@@ -41,21 +51,25 @@ public class Simulation
             Console.WriteLine("Entrée invalide. Veuillez entrer un nombre entre 1 et 4.");
         }
 
-        // On instancie avec un entier correspondant à une des premières semaines de la saison, tout en évitant que ce soit une semaine où le mode Urgence se déclenche 
-        if (numero == 1) calendrier = new Calendrier(1); 
-        else if (numero == 2) calendrier = new Calendrier(16);
-        else if (numero == 3) calendrier = new Calendrier(27);
-        else calendrier = new Calendrier(41);
+        // On instancie avec un entier correspondant à une des premières semaines de la saison, tout en évitant que ce soit une semaine où le mode Urgence se déclenche
+        if (numero == 1)
+            calendrier = new Calendrier(1);
+        else if (numero == 2)
+            calendrier = new Calendrier(16);
+        else if (numero == 3)
+            calendrier = new Calendrier(27);
+        else
+            calendrier = new Calendrier(41);
 
-        while (!fin) // Tant que la condition de fin n'est pas atteinte, le jeu continue 
+        while (!fin) // Tant que la condition de fin n'est pas atteinte, le jeu continue
         {
             // Le jeu passe en mode Urgence toutes les 5 semaines
             if (calendrier.semaine % 5 == 0)
             {
-                modeActuel = ModeJeu.Urgence; 
+                modeActuel = ModeJeu.Urgence;
             }
 
-            if (modeActuel == ModeJeu.Classique) 
+            if (modeActuel == ModeJeu.Classique)
             {
                 LancerTourClassique();
             }
@@ -78,8 +92,8 @@ public class Simulation
         temperature = saison.temperatureActuelle;
 
         Console.WriteLine($"*** Semaine n°{calendrier.semaine} ***");
-        Console.WriteLine(saison); // Affiche la saison et les données météo 
-        saison.DecrireMeteo(); 
+        Console.WriteLine(saison); // Affiche la saison et les données météo
+        saison.DecrireMeteo();
         System.Threading.Thread.Sleep(2500);
 
         /*
@@ -90,8 +104,8 @@ public class Simulation
         }
         */
 
-        List<Plante> plantes = new List<Plante>(); // Liste des plantes qui seront stockées dans la grille 
-        foreach (Case c in grille.cases) // On parcourt les cases de la grille 
+        List<Plante> plantes = new List<Plante>(); // Liste des plantes qui seront stockées dans la grille
+        foreach (Case c in grille.cases) // On parcourt les cases de la grille
         {
             if (c.plante != null) // Si la case contient une plante
             {
@@ -99,12 +113,16 @@ public class Simulation
             }
         }
 
-        foreach (Plante plante in plantes) // // On parcourt les plantes 
+        foreach (Plante plante in plantes) // // On parcourt les plantes
         {
             Console.WriteLine();
-            foreach (Maladie maladie in maladies) // On parcourt les maladies 
+            foreach (Maladie maladie in maladies) // On parcourt les maladies
             {
-                if (plante.x == maladie.x && plante.y == maladie.y && maladie.EstPlanteCible(plante)) // Si une plante et une maladie se situe sur la même case et que la plante est la cible privilégiée de la maladie
+                if (
+                    plante.x == maladie.x
+                    && plante.y == maladie.y
+                    && maladie.EstPlanteCible(plante)
+                ) // Si une plante et une maladie se situe sur la même case et que la plante est la cible privilégiée de la maladie
                 {
                     maladie.Infecter(plante); // Elle est maintenant infectée
                     Console.WriteLine($"{plante.nom} est infectée par {maladie.GetType().Name} !");
@@ -128,7 +146,8 @@ public class Simulation
         System.Threading.Thread.Sleep(1500);
         grille.Afficher(); // On affiche la grille
         AfficherMenuActions(); // On affiche le menu d'actions
-        if (fin) return; // Si la condition de fin est atteinte, on quitte le jeu
+        if (fin)
+            return; // Si la condition de fin est atteinte, on quitte le jeu
         calendrier.AvancerSemaine(); // On passe au tour suivant
     }
 
@@ -137,13 +156,17 @@ public class Simulation
         Console.Clear();
         Console.WriteLine("ATTENTION ! Un kart s'apprête à rouler sur votre jardin !");
 
-        Kart kart = new Kart(); 
+        Kart kart = new Kart();
         kart.Rouler(grille.lignes); // On indique sur quelle ligne le kart risque de rouler
 
         grille.Afficher();
 
-        Console.WriteLine("Appuyez sur E pour utiliser un éclair et stopper le kart tant qu'il en est encore temps !");
-        Console.WriteLine("Sinon, appuyez sur n'importe quelle autre touche... au péril de votre jardin...");
+        Console.WriteLine(
+            "Appuyez sur E pour utiliser un éclair et stopper le kart tant qu'il en est encore temps !"
+        );
+        Console.WriteLine(
+            "Sinon, appuyez sur n'importe quelle autre touche... au péril de votre jardin..."
+        );
         ConsoleKeyInfo touche = Console.ReadKey(true); // On récupère la touche sur laquelle le joueur appuie
 
         System.Threading.Thread.Sleep(2500);
@@ -177,9 +200,9 @@ public class Simulation
         Console.ReadKey(true);
 
         // Retour au mode classique
-        modeActuel = ModeJeu.Classique; 
+        modeActuel = ModeJeu.Classique;
         calendrier.AvancerSemaine();
-        
+
         System.Threading.Thread.Sleep(3500);
     }
 
@@ -193,17 +216,23 @@ public class Simulation
 
             // Informations utiles pour le joueur
             Console.WriteLine("\n Légende :");
-            Console.WriteLine("F = Fleur de feu  G = Fleur de glace  C = Arbre à cheddar  P = Plante Carnivore  X = Plante morte");
+            Console.WriteLine(
+                "F = Fleur de feu  G = Fleur de glace  C = Arbre à cheddar  P = Plante Carnivore  X = Plante morte"
+            );
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Une plante mature est affichée en vert");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Une plante non mature est affichée en blanc");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Une plante non mature est affichée en jaune");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("Une plante malade est affichée en gris sombre");
             Console.ResetColor();
-            Console.WriteLine("Couleurs des terrains : 🟨 Fromage 🟥 Volcan 🟦 Océan 🟪 Arc-en-ciel");
+            Console.WriteLine(
+                "Couleurs des terrains : 🟨 Fromage 🟥 Volcan 🟦 Océan 🟪 Arc-en-ciel"
+            );
 
-            Console.WriteLine($"\nInventaire : 🔥 Boules de feu = {inventaire.nbBoulesFeu} ❄️  Boules de glace = {inventaire.nbBoulesGlace} ⚡ Eclairs = {inventaire.nbEclairs} 🧀 Cheddars = {inventaire.nbCheddar} 🌟 Etoiles = {inventaire.nbEtoiles} 🧪 Sérums = {inventaire.nbSerums}");
+            Console.WriteLine(
+                $"\nInventaire : 🔥 Boules de feu = {inventaire.nbBoulesFeu} ❄️  Boules de glace = {inventaire.nbBoulesGlace} ⚡ Eclairs = {inventaire.nbEclairs} 🧀 Cheddars = {inventaire.nbCheddar} 🌟 Etoiles = {inventaire.nbEtoiles} 🧪 Sérums = {inventaire.nbSerums}"
+            );
 
             Console.WriteLine("\n Menu d'actions :");
             Console.WriteLine("1 - Arroser une plante");
@@ -221,16 +250,25 @@ public class Simulation
                 Console.WriteLine("Entrée invalide. Veuillez entrer un nombre entre 1 et 9.");
             }
 
-            if (numero == 1) ArroserPlante();
-            else if (numero == 2) CueillirFruits();
-            else if (numero == 3) SemerGraine();
-            else if (numero == 4) UtiliserObjet();
-            else if (numero == 5) DeracinerPlante();
-            else if (numero == 6) EtudierPlante();
-            else if (numero == 7) DiagnosticPlante();
+            if (numero == 1)
+                ArroserPlante();
+            else if (numero == 2)
+                CueillirFruits();
+            else if (numero == 3)
+                SemerGraine();
+            else if (numero == 4)
+                UtiliserObjet();
+            else if (numero == 5)
+                DeracinerPlante();
+            else if (numero == 6)
+                EtudierPlante();
+            else if (numero == 7)
+                DiagnosticPlante();
             else if (numero == 8)
             {
-                Console.WriteLine("*** Semaine suivante... Appuyez sur une touche pour continuer. ***");
+                Console.WriteLine(
+                    "*** Semaine suivante... Appuyez sur une touche pour continuer. ***"
+                );
                 Console.ReadKey(true);
                 return;
             }
@@ -255,7 +293,8 @@ public class Simulation
         if (c.plante != null && c.plante.etat) // Si la case contient une plante qui est vivante
         {
             c.plante.besoinEau -= 0.1; // Son taux de besoin en eau est réduit de 10%
-            if (c.plante.besoinEau < 0.1) c.plante.besoinEau = 0.1; // Valeur minimale raisonnable
+            if (c.plante.besoinEau < 0.1)
+                c.plante.besoinEau = 0.1; // Valeur minimale raisonnable
             Console.WriteLine($"{c.plante.nom} a été arrosée !");
         }
         else
@@ -271,7 +310,9 @@ public class Simulation
 
         if (c.plante != null && c.plante.etat && c.plante.nbFruits > 0 && c.plante.EstMature()) // Si la case contient une plante qui est vivante, qui possède des fruits et qui est à maturité
         {
-            Console.WriteLine($"Vous avez récolté {c.plante.nbFruits} fruit(s) de la plante {c.plante.nom} !");
+            Console.WriteLine(
+                $"Vous avez récolté {c.plante.nbFruits} fruit(s) de la plante {c.plante.nom} !"
+            );
             c.plante.RecupererObjet(); // La plante offre un ou plusieurs objets au joueur
         }
         else if (c.plante != null && c.plante.etat && !c.plante.EstMature()) // Si la case contient une plante qui est vivante mais immature
@@ -310,17 +351,24 @@ public class Simulation
             Console.WriteLine("Entrée invalide. Veuillez entrer un nombre entre 1 et 9.");
         }
 
-        // On place la plante choisie par le joueur sur la case dont on vient de récupérer les coordonnées 
-        if (numero == 1) grille.PlacerPlante(x, y, new FleurDeFeu(inventaire));
-        else if (numero == 2) grille.PlacerPlante(x, y, new FleurDeGlace(inventaire));
-        else if (numero == 3) grille.PlacerPlante(x, y, new ArbreACheddar(inventaire));
-        else if (numero == 4) grille.PlacerPlante(x, y, new PlanteCarnivore());
-        else Console.WriteLine("Choix invalide");
+        // On place la plante choisie par le joueur sur la case dont on vient de récupérer les coordonnées
+        if (numero == 1)
+            grille.PlacerPlante(x, y, new FleurDeFeu(inventaire));
+        else if (numero == 2)
+            grille.PlacerPlante(x, y, new FleurDeGlace(inventaire));
+        else if (numero == 3)
+            grille.PlacerPlante(x, y, new ArbreACheddar(inventaire));
+        else if (numero == 4)
+            grille.PlacerPlante(x, y, new PlanteCarnivore());
+        else
+            Console.WriteLine("Choix invalide");
     }
 
     public void UtiliserObjet() // Méthode permettant d'utiliser les objets de l'inventaire
     {
-        Console.WriteLine("Quel objet voulez-vous utiliser ? (1=Etoile, 2=Boule de Feu, 3=Boule de Glace, 4=Serum, 5=Cheddar)");
+        Console.WriteLine(
+            "Quel objet voulez-vous utiliser ? (1=Etoile, 2=Boule de Feu, 3=Boule de Glace, 4=Serum, 5=Cheddar)"
+        );
 
         if (!int.TryParse(Console.ReadLine(), out int numero)) // Afin d'éviter les erreurs en console si autre saisie
         {
@@ -335,7 +383,7 @@ public class Simulation
                 var c = RecupererCase();
 
                 Console.WriteLine("Utilisation d'une étoile !");
-                inventaire.nbEtoiles--; 
+                inventaire.nbEtoiles--;
                 c.plante.boostSatisfaction = true; // La plante reçoit un boost de satisfaction
             }
             else
@@ -393,7 +441,9 @@ public class Simulation
                 }
                 else
                 {
-                    Console.WriteLine("Aucune plante vivante à cet emplacement pour utiliser un sérum.");
+                    Console.WriteLine(
+                        "Aucune plante vivante à cet emplacement pour utiliser un sérum."
+                    );
                 }
                 inventaire.nbSerums--;
             }
@@ -418,9 +468,10 @@ public class Simulation
                 }
                 else
                 {
-                    Console.WriteLine("Vous ne pouvez donner du cheddar qu'aux plantes carnivores !");
+                    Console.WriteLine(
+                        "Vous ne pouvez donner du cheddar qu'aux plantes carnivores !"
+                    );
                 }
-
             }
             else
             {
@@ -462,15 +513,21 @@ public class Simulation
 
     public void EtudierPlante() // Méthode permettant d'afficher des informations sur tous les types de plante du jeu
     {
-        Console.WriteLine("\nVoici des informations d'utilité sur les différents types de plantes.");
+        Console.WriteLine(
+            "\nVoici des informations d'utilité sur les différents types de plantes."
+        );
         Console.WriteLine();
-        FleurDeFeu p1 = new FleurDeFeu(inventaire); p1.Afficher(); // Affiche des infos sur les fleurs de feu
+        FleurDeFeu p1 = new FleurDeFeu(inventaire);
+        p1.Afficher(); // Affiche des infos sur les fleurs de feu
         Console.WriteLine();
-        FleurDeGlace p2 = new FleurDeGlace(inventaire); p2.Afficher(); // Affiche des infos sur les fleurs de glace
+        FleurDeGlace p2 = new FleurDeGlace(inventaire);
+        p2.Afficher(); // Affiche des infos sur les fleurs de glace
         Console.WriteLine();
-        ArbreACheddar p3 = new ArbreACheddar(inventaire); p3.Afficher(); // Affiche des infos sur les arbres à cheddar
+        ArbreACheddar p3 = new ArbreACheddar(inventaire);
+        p3.Afficher(); // Affiche des infos sur les arbres à cheddar
         Console.WriteLine();
-        PlanteCarnivore p4 = new PlanteCarnivore(); p4.Afficher(); // Affiche des infos sur les plantes carnivores
+        PlanteCarnivore p4 = new PlanteCarnivore();
+        p4.Afficher(); // Affiche des infos sur les plantes carnivores
         Console.WriteLine("\nAppuyez sur Entrée pour continuer");
         Console.ReadKey(true);
     }
@@ -479,13 +536,13 @@ public class Simulation
     {
         if (maladiesDisponibles == null || maladiesDisponibles.Count == 0) // S'il n'y a pas de maladies dans la liste ou que cette liste n'existe pas
         {
-            throw new InvalidOperationException("Aucune maladie disponible."); 
+            throw new InvalidOperationException("Aucune maladie disponible.");
         }
 
         // On récupère un type de maladie au hasard parmi ceux de la liste
-        Maladie prototype = maladiesDisponibles[rng.Next(maladiesDisponibles.Count)]; 
+        Maladie prototype = maladiesDisponibles[rng.Next(maladiesDisponibles.Count)];
 
-        // On récupère des coordonnées aléatoires de la grille 
+        // On récupère des coordonnées aléatoires de la grille
         int x = rng.Next(grille.lignes);
         int y = rng.Next(grille.colonnes);
 
@@ -571,7 +628,7 @@ public class Simulation
             return null;
         }
 
-        if (x < 0 || y < 0 || x >= grille.lignes || y >= grille.colonnes) 
+        if (x < 0 || y < 0 || x >= grille.lignes || y >= grille.colonnes)
         {
             Console.WriteLine("Coordonnées hors limites");
             return null;
@@ -580,7 +637,3 @@ public class Simulation
         return grille.cases[x, y];
     }
 }
-    
-
-
-
