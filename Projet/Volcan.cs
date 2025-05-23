@@ -1,6 +1,6 @@
 public class Volcan : Terrain
 {
-    public Volcan() 
+    public Volcan()
     {
         nom = "Volcan";
     }

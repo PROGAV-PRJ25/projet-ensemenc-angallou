@@ -1,6 +1,6 @@
 public class ArcEnCiel : Terrain
 {
-    public ArcEnCiel() 
+    public ArcEnCiel()
     {
         nom = "ArcEnCiel";
     }
