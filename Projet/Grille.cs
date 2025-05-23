@@ -100,11 +100,7 @@ public class Grille
         }
     }
 
-<<<<<<< HEAD
     public List<Case> RecupererVoisines(int X, int Y) // Crée une liste des cases voisines à une dont les coordonnées sont rentrées en paramètre
-=======
-    public List<Case> RecupererVoisines(int X, int Y)
->>>>>>> refs/remotes/origin/main
     {
         List<Case> voisines = new List<Case>();
         int[] dx = { -1, 1, 0, 0 }; // haut et bas

@@ -1,32 +1,7 @@
 public class ArbreACheddar : Plante
 {
-<<<<<<< HEAD
     public Inventaire inventaire; // On a besoin de l'inventaire car cette plante donne du cheddars et d'autres objets
     public ArbreACheddar(Inventaire inv) : base("Arbre à cheddar",0,0,true,true, new Automne(), new Fromage(),0,1,6,0.6,0.5,10,25,50,2)
-=======
-    public Inventaire inventaire;
-
-    public ArbreACheddar(Inventaire inv)
-        : base(
-            "Arbre à Cheddar",
-            0,
-            0,
-            true,
-            true,
-            new Automne(),
-            new Fromage(),
-            1,
-            3,
-            1,
-            0.6,
-            0.5,
-            10,
-            25,
-            50,
-            4,
-            "🧀"
-        )
->>>>>>> refs/remotes/origin/main
     {
         inventaire = inv;
     }

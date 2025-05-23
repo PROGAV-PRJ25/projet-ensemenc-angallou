@@ -2,14 +2,8 @@ public class Case
 {
     public int x { get; set; }
     public int y { get; set; }
-<<<<<<< HEAD
     public Terrain terrain { get; set; } 
     public Plante? plante { get; set; } // ? car une case peut ne pas avoir de plante
-=======
-    public Terrain terrain { get; set; }
-    public Plante plante { get; set; }
-
->>>>>>> refs/remotes/origin/main
     public Case(int X, int Y, Terrain ter = null)
     {
         x = X;
@@ -17,7 +11,6 @@ public class Case
         terrain = ter;
         plante = null; // Les cases n'ont pas de plante à la base
     }
-<<<<<<< HEAD
     public string AfficherEmoji() // Méthode permettant de savoir quel symbole afficher dans la case
     {
         if (plante == null) // si la case ne contient pas de plante, on renvoie une case vide
@@ -28,15 +21,6 @@ public class Case
         {
             return " X ";
         }
-=======
-
-    public string AfficherEmoji()
-    {
-        if (plante != null)
-            return plante.RecupererEmoji();
-        else if (terrain != null)
-            return terrain.RecupererTerrain();
->>>>>>> refs/remotes/origin/main
         else
         {
             // Renvoie une lettre spécifique en fonction de la plante associée à la case, permettant de bien identifier
@@ -50,12 +34,7 @@ public class Case
             };
         }
     }
-<<<<<<< HEAD
     public ConsoleColor GetCouleurBordure()
-=======
-
-    public bool EstVide()
->>>>>>> refs/remotes/origin/main
     {
     if (terrain is Fromage) // Le terrain fromage a des bordures jaunes
         return ConsoleColor.Yellow;
